@@ -1,10 +1,11 @@
-# TEAM-TRUDYAGI
-<p align="center">
-  <img src="https://logo-base.com/logo/powerpoint_logo_icon.png" width="150">
-</p>
-## ПС-22
-## Уразаев Константин
-## Ляшко Дмитрий
-## Хасанов Ильсаф
+# Presentation Maker
+## PS-22
+
+[![Presentation Maker](https://77.img.avito.st/image/1/zBcbkra_YP41M7D9D_XxQf4xZvSlkWFErzFi-q-pYC6sMQ)](https://docs.google.com/document/d/10EWuftunmVMHsUgF_VAgH4s31zLBPSf5_SodmoB8iJw/edit)
+
+Dev's:
+- Urazaev Konstantin
+- Lyashko Dmitriy
+- Hasanov Il'saf
 > [!WARNING]
 > При просмотре будет больно, лучше не смотреть.
