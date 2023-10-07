@@ -12,6 +12,7 @@ const firstProject: types.HistoryProjects = {
                         imageSource: ""
                     },
                     slideElement: [],
+                    selectElement: [],
                 }            
             ],
             selectedSlide: [
@@ -44,8 +45,10 @@ const secondProject: types.HistoryProjects = {
                                     x: 5,
                                     y: 5
                                 },
-                                width: 50,
-                                height: 50
+                                size: {
+                                    width: 100,
+                                    height: 100,
+                                }
                             }
                         },
                         {
@@ -66,6 +69,9 @@ const secondProject: types.HistoryProjects = {
                             }
                         }
                     ],
+                    selectElement: [
+                        
+                    ]
                 }            
             ],
             selectedSlide: [
@@ -98,8 +104,10 @@ const thirdProject: types.HistoryProjects = {
                                     x: 50,
                                     y: 50
                                 },
-                                width: 100,
-                                height: 100
+                                size: {
+                                    width: 50,
+                                    height: 50
+                                }
                             }
                         },
                         {
@@ -107,21 +115,21 @@ const thirdProject: types.HistoryProjects = {
                             layer: 1,
                             typeElement: {
                                 form: {
-                                    first_angle: {
+                                    firstAngle: {
                                         x: 20,
                                         y: 20
                                     },
-                                    second_angle: {
+                                    secondAngle: {
                                         x: 25,
                                         y: 25
                                     },
-                                    third_angle: {
+                                    thirdAngle: {
                                         x: 30,
                                         y: 30
                                     }
                                 },
                                 color: "#FFFFF",
-                                border_color: "#00000"
+                                borderColor: "#00000"
                             }
                         },
                         {
@@ -139,7 +147,7 @@ const thirdProject: types.HistoryProjects = {
                                     }
                                 },
                                 color: "#FFFFCC",
-                                border_color: "#FFFFFF"
+                                borderColor: "#FFFFFF"
                             }
                         },
                         {
@@ -154,7 +162,7 @@ const thirdProject: types.HistoryProjects = {
                                     }
                                 },
                                 color: "#003300",
-                                border_color: "#003300"
+                                borderColor: "#11111",
                             }
                         },
                         {
@@ -174,6 +182,9 @@ const thirdProject: types.HistoryProjects = {
                                 }
                             }
                         }
+                    ],
+                    selectElement: [
+
                     ]
                 }
             ],

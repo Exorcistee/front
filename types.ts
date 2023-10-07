@@ -13,10 +13,15 @@ type SelectedSlide = {
     id: number,
 }
 
+type SelectedElement = {
+    id: number,
+}
+
 type Slide = {
     id: number,
     background: Background,
-    slideElement: Array<SlideElement> 
+    slideElement: Array<SlideElement> ,
+    selectElement: Array<SelectedElement>
 }
 
 type Background = {
@@ -41,20 +46,19 @@ type TextElement = {
 type Image = {
     imgSource: string,
     position: Point,
-    width: number,
-    height: number,
+    size: Size,
 }
 
 type Shape = {
     form: Triangle | Rectangle | Cirlce,
     color: string,
-    border_color: string,
+    borderColor: string,
 }
 
 type Triangle = {
-    first_angle: Point,
-    second_angle: Point,
-    third_angle: Point,
+    firstAngle: Point,
+    secondAngle: Point,
+    thirdAngle: Point,
 }
 
 type Rectangle = {
@@ -65,6 +69,11 @@ type Rectangle = {
 type Cirlce = {
     radius: number,
     center: Point,
+}
+
+type Size = {
+    width: number,
+    height: number,
 }
 
 type Point = {
