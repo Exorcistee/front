@@ -1,0 +1,14 @@
+.main {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #f1f1f2;
+    user-select: none;
+    overflow: hidden;
+  }
+  
+  .workSpace {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
