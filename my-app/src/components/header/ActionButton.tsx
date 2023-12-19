@@ -9,8 +9,25 @@ type ButtonProps = {
 
 export function ActionButton({
     label,
-    icon,
-    style
+    icon
 }:ButtonProps) {
-    return <button className= {styles.actionButton }>123</button>
+    return (
+    <button className= {styles.actionButton }>
+        {icon && (
+        <span
+          className={`${styles.buttonIcon} material-icons`}
+        >
+          {icon}
+        </span>
+        )}
+        {label && (
+        <span
+          className={styles.actionButtonLabel}
+        >
+          {label}
+        </span>
+      )}
+        
+    </button>
+    )
 }

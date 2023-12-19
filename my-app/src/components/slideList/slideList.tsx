@@ -1,10 +1,11 @@
 import style from "./slideList.module.css"
+import { MiniSlide } from "./miniSlide"
 
 export function slideList() {
     return (
             <div className= {style.slideList}>
                 <div>
-                    123
+                    <MiniSlide />
                 </div>
             </div>
     )
