@@ -6,6 +6,7 @@ export function slideList() {
             <div className= {style.slideList}>
                 <div>
                     <MiniSlide />
+                    <MiniSlide />
                 </div>
             </div>
     )
