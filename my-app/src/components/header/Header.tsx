@@ -10,15 +10,7 @@ export function Header() {
             <img src = {Logo} className={styles.logo}/>
             <div className= {styles.presentationInfo}>
                 <Title />
-                <Menu newPresentation={() => {
-                    console.log("Новая презентация");
-                }}
-                openPresentation={() => {
-                    console.log("Открыть презентацию");
-                }}
-                savePresentation={() => {
-                    console.log("Сохранить презентацию");
-                }} /> 
+                <Menu /> 
             </div>
         </div>
     )
