@@ -11,7 +11,8 @@
   
   .slide {
     aspect-ratio: 16 / 9;
-    width: 860px;
+    width: 860px0;
+    background: #ffffff;
     border-color: #ffffff;
     border-radius: 8px;
     border: 1px solid #e2e2e2;

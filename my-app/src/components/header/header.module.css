@@ -8,8 +8,8 @@
 }
 
 .logo {
-    width: 128px;
-    height: 128px;
+    width: 80px;
+    height: 80px;
     margin-right: 16px;
     cursor: pointer;
     transition: 250ms;
@@ -22,6 +22,13 @@
     align-items: baseline;
     flex: 1;
   }
+
+.presentationMenuBar {
+  padding: 15px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
 .title {
     padding-left: 7px;

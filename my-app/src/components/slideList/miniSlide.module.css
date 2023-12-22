@@ -1,0 +1,44 @@
+.slideMiniature {
+    width: 250px;
+    aspect-ratio: 16 / 9;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e2e2;
+    cursor: pointer;
+    transition: 100ms;
+    display: flex;
+    overflow: hidden;
+  }
+  
+  .slideMiniature:hover {
+    box-shadow: inset 4px 4px 80px rgb(0 0 0 / 5%);
+  }
+  
+  .slideRemove:hover {
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .slidePreview {
+    display: flex;
+    margin-left: -30px;
+    padding-left: 24px;
+    margin-bottom: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 0 8px 8px 0;
+    padding-right: 8px;
+    overflow: hidden;
+  }
+  
+  .slidePreviewMini {
+    transform: scale(0.3);
+    top: 0;
+    left: 0;
+    display: flex;
+  }
+  
+  .slidePreviewMini * {
+    position: absolute;
+  }
+  
