@@ -10,7 +10,7 @@ Dev's:
 > [!WARNING]
 > При просмотре будет больно, лучше не смотреть.
 
-## Команды для запуска presentation maker'а
+## Команды для запуска presentation maker'а (перед этим перейти в каталог my-app)
 ```
 npm install
 npm start
