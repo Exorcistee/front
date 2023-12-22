@@ -2,7 +2,7 @@ import { Shape } from "./shapeTypes";
 import { Image } from "./imageTypes";
 import { Text } from "./textTypes";
 
-export type Element = {
+export type TypesElement = {
     id: string;
     width: number;
     height: number;
