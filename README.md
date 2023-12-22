@@ -5,7 +5,13 @@
 
 Dev's:
 - [Urazaev Konstantin](https://github.com/Exorcistee)
-- Lyashko Dmitriy
+- [Lyashko Dmitriy](https://github.com/KREeDo5)
 - [Hasanov Il'saf](https://github.com/IlsafCreator)
 > [!WARNING]
 > При просмотре будет больно, лучше не смотреть.
+
+## Команды для запуска presentation maker'а
+```
+npm install
+npm start
+```
