@@ -1,12 +1,16 @@
-import React from 'react';
-import { Editor } from "./components/editor/Editor"
+  import React from 'react';
+  import { Editor } from "./components/editor/Editor"
 
-function App() {
-  return (
-    <div>
-      <Editor />
-    </div>
-  )
-}
+  export type Props = {
+    name: string;
+  }
 
-export default App;
+  function App( {name}: Props) {
+    return (
+      <div>
+        <Editor />
+      </div>
+    )
+  }
+
+  export default App;
