@@ -26,7 +26,7 @@
             height = "1000"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <ellipse cx={100 / 2} cy={100 / 2} rx={100 / 2} ry={100/ 2}/>
+            <ellipse cx={50} cy={50} rx={50} ry={50}/>
 
           </svg> 
         </div>  )
