@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": [
+        "./*"
+      ],
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types"
+    ],
+  },
+  "extends": "./.configs/tsconfig.json",
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+  ],
+}

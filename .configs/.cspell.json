@@ -1,0 +1,33 @@
+{
+  "version": "0.2",
+  "language": "en, ru",
+  "allowCompoundWords": true,
+  "ignorePaths": [
+    "**/*.drawio",
+    "**/dist",
+    "**/node_modules",
+    "**/package.json",
+    "**/pnpm-lock.yaml",
+    "**/src/shared/lib/i18n/**/translation.*.json"
+  ],
+  "import": [
+    "../node_modules/@cspell/dict-ru_ru/cspell-ext.json"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "customWords",
+      "path": "./.cSpellWords.txt"
+    }
+  ],
+  "dictionaries": [
+    "companies",
+    "css",
+    "customWords",
+    "html",
+    "misc",
+    "node",
+    "npm",
+    "softwareTerms",
+    "typescript"
+  ]
+}
