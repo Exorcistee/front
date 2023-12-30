@@ -1,10 +1,8 @@
 import { FC } from 'react'
-import { Shape } from '~/model/element/ShapeTypes'
+import { IBaseSlideShape } from '~/model/project/slide/element/shape/BaseSlideShape'
 
 interface ShapeElementProps {
-  Shape: Shape;
-  width: number;
-  height: number;
+  shape: IBaseSlideShape;
 }
 
 export const ShapeElement: FC<ShapeElementProps> = (_: ShapeElementProps): JSX.Element => {

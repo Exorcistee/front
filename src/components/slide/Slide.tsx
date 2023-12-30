@@ -1,15 +1,57 @@
-import { ElementSlide } from './Element'
-import { FC } from 'react'
-import styles from './Element.module.css'
+import {
+  FC,
+  useState,
+} from 'react'
+import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
+import { ISlide } from '~/model/project/slide/Slide'
+import { SlideElement } from './element/Element'
+import styles from './Slide.module.css'
 
-interface SlideProps {}
+interface _SlideElementsProps {
+  elements: IBaseSlideElement[];
+}
 
-export const Slide: FC<SlideProps> = (_: SlideProps): JSX.Element => {
+const _SlideElements: FC<_SlideElementsProps> = ({ elements }: _SlideElementsProps): JSX.Element => {
+  const [_elementsList, _setElementsList] = useState<IBaseSlideElement[]>([])
+
+  // _setElementsList(list => {list[0]})
+
   return (
-    <div className={styles.Slide}>
-      <ElementSlide element="text" />
-      <ElementSlide element="shape" />
-      <ElementSlide element="image" />
+    <>
+      {elements.map(el => {
+        return (
+          <SlideElement
+            key={el.id}
+            element={el}
+          />
+        )
+      })}
+    </>
+  )
+}
+
+interface SlideProps {
+  slide: ISlide;
+  isPreview: boolean;
+}
+
+export const Slide: FC<SlideProps> = ({
+  slide, isPreview,
+}: SlideProps): JSX.Element => {
+  return (
+    <div className={!isPreview ? styles.slide : styles['slide-preview']}>
+      {isPreview
+        ? (
+          <div className={styles['slide-miniature']}>
+            <div className={styles['slide-preview-mini']}>
+              <_SlideElements elements={slide.slideElements} />
+            </div>
+          </div>
+        )
+        : (
+          <_SlideElements elements={slide.slideElements} />
+        )
+      }
     </div>
   )
 }

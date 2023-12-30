@@ -1,12 +1,14 @@
 import { FC } from 'react'
-import { Text } from '~/model/element/TextTypes'
+import { IText } from '~/model/project/slide/element/Text'
 
 interface TextElementProps {
-  text: Text;
+  text: IText;
 }
 
 export const TextElement: FC<TextElementProps> = (_: TextElementProps): JSX.Element => {
   return (
-    <div></div>
+    <div>
+      <span>This is text</span>
+    </div>
   )
 }
