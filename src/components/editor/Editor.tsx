@@ -1,8 +1,8 @@
 import { Header } from '../header/Header'
 import { Actions } from '../header/Actions'
-import SlideList from '../slideList/slideList'
-import MainSpace from '../mainSpace/mainSpace'
-import InfoSpace from '../InfoSpace/infoSpace'
+import SlideList from '../slideList/SlideList'
+import MainSpace from '../mainSpace/MainSpace'
+import InfoSpace from '../InfoSpace/InfoSpace'
 import styles from './Editor.module.css'
 
 export function Editor() {

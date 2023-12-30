@@ -1,6 +1,6 @@
-import { Image } from './imageTypes'
-import { Shape } from './shapeTypes'
-import { Text } from './textTypes'
+import { Image } from './ImageTypes'
+import { Shape } from './ShapeTypes'
+import { Text } from './TextTypes'
 
 export interface TypesElement {
   id: string;

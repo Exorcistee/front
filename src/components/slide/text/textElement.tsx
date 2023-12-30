@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Text } from '~/model/element/textTypes'
+import { Text } from '~/model/element/TextTypes'
 
 interface TextElementProps {
   text: Text;

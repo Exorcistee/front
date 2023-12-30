@@ -1,13 +1,11 @@
 import style from './slideList.module.css'
-import { MiniSlide } from './mini-slide'
+import { MiniSlide } from './MiniSlide'
 
 export function slideList() {
   return (
     <div className= {style.slideList}>
-      <div>
         <MiniSlide />
         <MiniSlide />
-      </div>
     </div>
   )
 }

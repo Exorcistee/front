@@ -1,6 +1,6 @@
 import { ElementSlide } from '../slide/Element'
 import { FC } from 'react'
-import { TypesElement } from '~/model/element/elements-types'
+import { TypesElement } from '~/model/element/ElementTypes'
 import styles from './miniSlide.module.css'
 
 interface MiniSlideProps {

@@ -39,7 +39,6 @@ module.exports = defineConfig({
   ignorePatterns: [
     'dist/**/*',
     '.eslintrc.cjs',
-    'src\shared\i18n\**\*',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -127,7 +126,7 @@ module.exports = defineConfig({
     ],
     'indent': [ 'warn', 2 ],
     'jsx-quotes': [ 'warn', 'prefer-double' ],
-    'linebreak-style': [ 'warn', 'unix' ],
+    'linebreak-style': [ 'warn', 'windows' ],
     'lines-between-class-members': 'off',
     'max-len': [ 'warn', 120 ],
     'no-console': 'warn',

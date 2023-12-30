@@ -9,3 +9,15 @@ export const App: FC<AppProps> = (_: AppProps): JSX.Element => {
     <Editor />
   )
 }
+/*
+export type Props ={
+  name:string
+}
+
+function App({name}: Props){
+  return(
+    <Editor />
+  )
+}
+export default App;
+*/

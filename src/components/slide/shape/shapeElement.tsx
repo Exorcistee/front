@@ -1,9 +1,9 @@
-import { Shape } from '~/model/element/shapeTypes'
+import { Shape } from '~/model/element/ShapeTypes'
 
 interface Props {
-    Shape: Shape;
-    width: number;
-    height: number;
+  Shape: Shape;
+  width: number;
+  height: number;
 }
 
 export function ShapeElement({
