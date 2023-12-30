@@ -1,0 +1,26 @@
+.menu-button {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  font-size: 16px;
+  font-weight: 900;
+  color: #727272;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 8px;
+  transition: 100ms;
+}
+
+.menu-button:active {
+  transition: 100ms;
+  transform: scaleX(0.95) scaleY(0.95);
+}
+
+.menu-button:hover {
+  background-color: #f2f2f2;
+}
+
+.buttonIcon {
+  margin-right: 8px;
+  font-size: 21px;
+}

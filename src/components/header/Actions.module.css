@@ -1,0 +1,17 @@
+.action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 8px 12px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.action-main {
+  display: flex;
+  padding: 0px 73px 0px 0px;
+}
+
+.button-icon {
+  font-size: 24px;
+}
