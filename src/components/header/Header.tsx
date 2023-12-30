@@ -13,7 +13,7 @@ export const Header: FC<HeaderProps > = (_: HeaderProps ): JSX.Element => {
         className={styles.logo}
         src = {Logo}
       />
-      <div className={styles.presentationInfo}>
+      <div className={styles['presentation-info']}>
         <Title />
         <Menu />
       </div>

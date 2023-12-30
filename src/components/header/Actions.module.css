@@ -1,4 +1,4 @@
-.actionBar {
+.action-bar {
   display: flex;
   align-items: center;
   justify-content: left;
@@ -6,11 +6,12 @@
   background-color: #ffffff;
   border-bottom: 1px solid #e2e2e2;
 }
-.actionMain {
+
+.action-main {
   display: flex;
   padding: 0px 73px 0px 0px;
 }
 
-.buttonIcon {
+.button-icon {
   font-size: 24px;
 }

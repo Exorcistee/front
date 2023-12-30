@@ -1,4 +1,4 @@
-.slideMiniature {
+.slide-miniature {
   display: flex;
   width: 250px;
   aspect-ratio: 16 / 9;
@@ -11,7 +11,7 @@
   transition: 100ms;
 }
 
-.slideMiniature:hover {
+.slide-miniature:hover {
   box-shadow: inset 4px 4px 80px rgb(0 0 0 / 5%);
 }
 
@@ -30,13 +30,13 @@
   border-radius: 0 8px 8px 0;
 }
 
-.slidePreviewMini {
+.slide-preview-mini {
   top: 0;
   left: 0;
   display: flex;
   transform: scale(0.3);
 }
 
-.slidePreviewMini * {
+.slide-preview-mini * {
   position: absolute;
 }

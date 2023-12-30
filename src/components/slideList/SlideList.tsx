@@ -6,7 +6,7 @@ interface SlideListProps {}
 
 export const SlideList: FC<SlideListProps> = (_: SlideListProps): JSX.Element => {
   return (
-    <div className={style.slideList}>
+    <div className={style['slide-list']}>
       <MiniSlide />
       <MiniSlide />
     </div>

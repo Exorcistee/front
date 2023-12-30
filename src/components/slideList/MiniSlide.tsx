@@ -11,8 +11,8 @@ interface MiniSlideProps {
 export const MiniSlide: FC<MiniSlideProps> = (_: MiniSlideProps): JSX.Element => {
   return (
     <div className={styles.slidePreview}>
-      <div className={styles.slideMiniature}>
-        <div className={styles.slidePreviewMini}>
+      <div className={styles['slide-miniature']}>
+        <div className={styles['slide-preview-mini']}>
           <ElementSlide element="text" />
           <ElementSlide element="shape" />
           <ElementSlide element="image" />

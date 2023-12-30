@@ -1,4 +1,4 @@
-.menuButton {
+.menu-button {
   display: flex;
   align-items: center;
   padding: 6px 8px;
@@ -11,12 +11,12 @@
   transition: 100ms;
 }
 
-.menuButton:active {
+.menu-button:active {
   transition: 100ms;
   transform: scaleX(0.95) scaleY(0.95);
 }
 
-.menuButton:hover {
+.menu-button:hover {
   background-color: #f2f2f2;
 }
 

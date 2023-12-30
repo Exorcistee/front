@@ -1,4 +1,4 @@
-.actionButton {
+.action-button {
   display: flex;
   align-items: center;
   padding: 11px 16px;
@@ -14,16 +14,21 @@
   transition: 250ms;
 }
 
-.actionButton:hover {
+.action-button:hover {
   background-color: #f62b7c;
   transition: 250ms;
 }
 
-.actionButton:active {
+.action-button:active {
   transform: scaleX(0.97) scaleY(0.97);
 }
 
-.actionButtonLabel {
+.action-button-label {
   font-size: 16px;
   font-weight: bold;
+}
+
+.buttonIcon {
+  margin-right: 8px;
+  font-size: 21px;
 }

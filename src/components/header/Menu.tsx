@@ -1,8 +1,10 @@
+import { FC } from 'react'
 import { MenuButton } from './MenuButton'
 import styles from './Menu.module.css'
 
-export function Menu() {
+interface MenuProps {}
 
+export const Menu: FC<MenuProps> = (_: MenuProps): JSX.Element => {
   const saveTextToFile = (text: string, fileName: string) => {
     const a = document.createElement('a')
     const file = new Blob([text], { type: 'text/plain' })
@@ -19,7 +21,7 @@ export function Menu() {
   }
 
   return (
-    <div className={styles.presentationMenuBar}>
+    <div className={styles['presentation-menu-bar']}>
       <MenuButton label="Создать" />
       <MenuButton label="Открыть" />
       <MenuButton

@@ -1,16 +1,17 @@
+import { FC } from 'react'
 import styles from './MenuButton.module.css'
 
-interface Props {
+interface MenuButtonProps {
   label: string;
   onClick?: () => void;
 }
 
-export function MenuButton({
+export const MenuButton: FC<MenuButtonProps> = ({
   label, onClick,
-}: Props) {
+}: MenuButtonProps): JSX.Element => {
   return (
     <div
-      className={styles.menuButton}
+      className={styles['menu-button']}
       onClick={onClick}
     >
       {label}
