@@ -1,4 +1,4 @@
-import { Shape } from '../../../models/element/shapeTypes'
+import { Shape } from '~/models/element/shapeTypes'
 
 interface Props {
     Shape: Shape;
@@ -7,7 +7,7 @@ interface Props {
 }
 
 export function ShapeElement({
-  Shape, width, height, 
+  Shape, width, height,
 }: Props) {
   return (
     <div>

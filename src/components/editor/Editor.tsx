@@ -1,4 +1,3 @@
-import React from 'react'
 import { Header } from '../header/Header'
 import { Actions } from '../header/Actions'
 import SlideList from '../slideList/slideList'

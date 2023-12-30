@@ -37,7 +37,7 @@ export function ElementSlide(
       <div>
         <img
           height={100}
-          src = "../../../public/logo512.png"
+          src = "~/public/logo512.png"
           width={100}
         >
         </img>
