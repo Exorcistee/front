@@ -1,10 +1,10 @@
+import { FC } from 'react'
+
 interface ElementSlideProps {
   element: string;
 }
 
-export function ElementSlide(
-  { element }: ElementSlideProps
-) {
+export const ElementSlide: FC<ElementSlideProps> = ({ element }: ElementSlideProps): JSX.Element => {
   if (element == 'text') {
     return (
       <div>
@@ -16,8 +16,8 @@ export function ElementSlide(
     return (
       <div>
         <svg
-          height = "1000"
-          width = "1000"
+          height="1000"
+          width="1000"
           xmlns="http://www.w3.org/2000/svg"
         >
           <ellipse
@@ -28,15 +28,14 @@ export function ElementSlide(
           />
 
         </svg>
-      </div>  )
+      </div>)
   }
   else {
-
     return (
       <div>
         <img
           height={100}
-          src = "~/public/logo512.png"
+          src="~/public/logo512.png"
           width={100}
         >
         </img>

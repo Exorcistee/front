@@ -1,5 +1,5 @@
-import styles from './header.module.css'
 import { MenuButton } from './MenuButton'
+import styles from './Menu.module.css'
 
 export function Menu() {
 
@@ -13,29 +13,18 @@ export function Menu() {
     a.remove()
   }
 
-  const saveJsonObjToFile = (obj: any, fileName: string) => {
+  const saveJsonObjToFile = (obj: unknown, fileName: string) => {
     const text = JSON.stringify(obj)
     saveTextToFile(text, fileName)
   }
 
   return (
     <div className={styles.presentationMenuBar}>
-      <MenuButton
-        label="Создать"
-        onClick={() => {
-          console.log('Pressed button <<Создать>>')
-        }}
-      />
-      <MenuButton
-        label="Открыть"
-        onClick={() => {
-          console.log('Pressed button <<Открыть>>')
-        }}
-      />
+      <MenuButton label="Создать" />
+      <MenuButton label="Открыть" />
       <MenuButton
         label="Сохранить"
         onClick={() => {
-          console.log('Pressed button <<Сохранить>>')
           // Пример сохранения объекта JSON в файл
           const saveObj = { 'a': 3 } // Замените на данные, которые вы хотите сохранить
           saveJsonObjToFile(saveObj, 'presentation.json')

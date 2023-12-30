@@ -1,8 +1,7 @@
-import { Header } from '../header/Header'
 import { Actions } from '../header/Actions'
-import SlideList from '../slideList/SlideList'
-import MainSpace from '../mainSpace/MainSpace'
-import InfoSpace from '../InfoSpace/InfoSpace'
+import { Header } from '../header/Header'
+import { MainSpace } from '../mainSpace/MainSpace'
+import { SlideList } from '../slideList/SlideList'
 import styles from './Editor.module.css'
 
 export function Editor() {
@@ -13,7 +12,6 @@ export function Editor() {
       <div className = {styles.workSpace}>
         <SlideList />
         <MainSpace />
-        <InfoSpace />
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 export interface Shape {
-  form: Triangle | Rectangle | Cirlce;
-  color: string;
   borderColor: string;
+  color: string;
+  form: Triangle | Rectangle | Circle;
 }
 
 export interface Triangle {
@@ -15,14 +15,14 @@ export interface Rectangle {
   rightPoint: Point;
 }
 
-export interface Cirlce {
+export interface Circle {
   radius: number;
   center: Point;
 }
 
 export interface Size {
-  width: number;
   height: number;
+  width: number;
 }
 
 export interface Point {

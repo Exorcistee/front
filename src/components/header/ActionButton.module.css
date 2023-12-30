@@ -1,17 +1,17 @@
 .actionButton {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background-color: #fafafa;
-  font-size: 16px;
-  color: #040303;
-  font-family: "Montserrat";
-  padding: 11px 16px;
-  border-radius: 8px;
-  transition: 250ms;
-  margin-right: 7px;
   display: flex;
   align-items: center;
+  padding: 11px 16px;
+  margin-right: 7px;
+  font-family: "Montserrat";
+  font-size: 16px;
+  color: #040303;
+  cursor: pointer;
+  background-color: #fafafa;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  transition: 250ms;
 }
 
 .actionButton:hover {

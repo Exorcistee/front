@@ -1,16 +1,19 @@
-import { CSSProperties } from 'react'
+import {
+  CSSProperties,
+  FC,
+} from 'react'
 import styles from './ActionButton.module.css'
 
-interface ButtonProps {
-    label?: string;
-    icon?: string;
-    style?: CSSProperties;
+interface ActionButtonProps {
+  label?: string;
+  icon?: string;
+  style?: CSSProperties;
 }
 
-export function ActionButton({
+export const ActionButton: FC<ActionButtonProps> = ({
   label,
   icon,
-}:ButtonProps) {
+}: ActionButtonProps): JSX.Element => {
   return (
     <button className= {styles.actionButton }>
       {icon && (

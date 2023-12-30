@@ -1,7 +1,7 @@
 .actionBar {
   display: flex;
-  justify-content: left;
   align-items: center;
+  justify-content: left;
   padding: 8px 12px;
   background-color: #ffffff;
   border-bottom: 1px solid #e2e2e2;

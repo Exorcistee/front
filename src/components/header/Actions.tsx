@@ -1,7 +1,10 @@
 import { ActionButton } from './ActionButton'
-import styles from './Action.module.css'
+import { FC } from 'react'
+import styles from './Actions.module.css'
 
-export function Actions (){
+interface ActionProps {}
+
+export const Actions: FC<ActionProps> = (_: ActionProps): JSX.Element => {
   return (
     <div className= { styles.actionBar }>
       <div className= {styles.actionMain}>

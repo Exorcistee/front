@@ -3,12 +3,12 @@ import { Shape } from './ShapeTypes'
 import { Text } from './TextTypes'
 
 export interface TypesElement {
-  id: string;
-  width: number;
-  height: number;
-  position: Position;
   color?: string;
   data: Text | Image | Shape;
+  height: number;
+  id: string;
+  position: Position;
+  width: number;
 }
 
 export interface Position {
@@ -17,7 +17,7 @@ export interface Position {
 }
 
 export interface Size {
-  width: number;
   height: number;
+  width: number;
 }
 

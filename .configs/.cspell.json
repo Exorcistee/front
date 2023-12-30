@@ -3,6 +3,7 @@
   "language": "en, ru",
   "allowCompoundWords": true,
   "ignorePaths": [
+    "**/*.drawio",
     "**/dist",
     "**/node_modules",
     "**/package.json",

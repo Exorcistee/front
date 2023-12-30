@@ -1,95 +1,19 @@
-import * as types from './types'
+import { HistoryProjects } from './types'
 
-const firstProject: types.HistoryProjects = {
+export const projectExample: HistoryProjects = {
   listProject: [
     {
-      title: 'Первый проект',
-      slide: [
-        {
-          id: 1,
-          background: {
-            color: '#FFFFF',
-            imageSource: '',
-          },
-          slideElement: [],
-          selectElement: [],
-        },
-      ],
-      selectedSlide: [
+      selectedSlide:[
         { id: 1 },
       ],
-    },
-  ],
-}
-
-const secondProject: types.HistoryProjects = {
-  listProject: [
-    {
-      title: 'Первый проект',
       slide: [
         {
-          id: 1,
-          background: {
-            color: '#FFFFF',
-            imageSource: '',
-          },
-          slideElement: [
-            {
-              id: 1,
-              layer: 1,
-              typeElement: {
-                imgSource: '',
-                position: {
-                  x: 5,
-                  y: 5,
-                },
-                size: {
-                  width: 100,
-                  height: 100,
-                },
-              },
-            },
-            {
-              id: 2,
-              layer: 1,
-              typeElement: {
-                str: 'строка',
-                font: 'Arial',
-                fontSize: 20,
-                leftPoint: {
-                  x: 60,
-                  y: 60,
-                },
-                rightPoint: {
-                  x: 70,
-                  y: 70,
-                },
-              },
-            },
-          ],
-          selectElement: [
-
-          ],
-        },
-      ],
-      selectedSlide: [
-        { id: 1 },
-      ],
-    },
-  ],
-}
-
-const thirdProject: types.HistoryProjects = {
-  listProject: [
-    {
-      title: 'Первый проект',
-      slide: [
-        {
-          id: 1,
           background: {
             color: '#F32F2',
             imageSource: '',
           },
+          id: 1,
+          selectElement: [],
           slideElement: [
             {
               id: 1,
@@ -101,8 +25,8 @@ const thirdProject: types.HistoryProjects = {
                   y: 50,
                 },
                 size: {
-                  width: 50,
                   height: 50,
+                  width: 50,
                 },
               },
             },
@@ -110,6 +34,8 @@ const thirdProject: types.HistoryProjects = {
               id: 2,
               layer: 1,
               typeElement: {
+                borderColor: '#00000',
+                color: '#FFFFF',
                 form: {
                   firstAngle: {
                     x: 20,
@@ -124,14 +50,14 @@ const thirdProject: types.HistoryProjects = {
                     y: 30,
                   },
                 },
-                color: '#FFFFF',
-                borderColor: '#00000',
               },
             },
             {
               id: 3,
               layer: 2,
               typeElement: {
+                borderColor: '#FFFFFF',
+                color: '#FFFFCC',
                 form: {
                   leftPoint: {
                     x: 70,
@@ -142,23 +68,21 @@ const thirdProject: types.HistoryProjects = {
                     y: 80,
                   },
                 },
-                color: '#FFFFCC',
-                borderColor: '#FFFFFF',
               },
             },
             {
               id: 4,
               layer: 2,
               typeElement: {
+                borderColor: '#11111',
+                color: '#003300',
                 form: {
-                  radius: 50,
                   center: {
                     x: 90,
                     y: 90,
                   },
+                  radius: 50,
                 },
-                color: '#003300',
-                borderColor: '#11111',
               },
             },
             {
@@ -175,19 +99,13 @@ const thirdProject: types.HistoryProjects = {
                   x: 110,
                   y: 110,
                 },
-                str: 'dfsnfjsd',
+                str: 'random string',
               },
             },
           ],
-          selectElement: [],
         },
       ],
-      selectedSlide:[
-        { id: 1 },
-      ],
+      title: 'Первый проект',
     },
   ],
-}
-export {
-  firstProject, secondProject, thirdProject,
 }

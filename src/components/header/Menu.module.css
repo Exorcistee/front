@@ -1,0 +1,6 @@
+.presentationMenuBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 15px 0px 0px 0px;
+}

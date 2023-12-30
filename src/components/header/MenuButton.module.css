@@ -1,19 +1,19 @@
 .menuButton {
-  font-size: 16px;
-  padding: 6px 8px;
-  border-radius: 8px;
-  cursor: pointer;
-  color: #727272;
-  font-weight: 900;
-  transition: 100ms;
-  align-items: center;
-  user-select: none;
   display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  font-size: 16px;
+  font-weight: 900;
+  color: #727272;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 8px;
+  transition: 100ms;
 }
 
 .menuButton:active {
-  transform: scaleX(0.95) scaleY(0.95);
   transition: 100ms;
+  transform: scaleX(0.95) scaleY(0.95);
 }
 
 .menuButton:hover {

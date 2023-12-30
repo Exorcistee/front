@@ -1,13 +1,13 @@
-import styles from './header.module.css'
+import { FC } from 'react'
+import styles from './Title.module.css'
 
-export function Title() {
+interface TitleProps {}
 
+export const Title: FC<TitleProps> = (_: TitleProps ): JSX.Element => {
   return (
-
     <input
       className={styles.title}
       placeholder="Новая презентация"
     />
-
   )
 }

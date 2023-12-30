@@ -5,10 +5,8 @@ import ReactDOM from 'react-dom/client'
 import { StrictMode } from 'react'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <>
+  <StrictMode>
     <CssBaseline />
-    <StrictMode>
-      <App />
-    </StrictMode>
-  </>
+    <App />
+  </StrictMode>
 )

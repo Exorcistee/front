@@ -1,13 +1,13 @@
 export interface Font {
-  family: string;
-  color: string;
-  size: number;
   bold?: boolean;
+  color: string;
+  family: string;
   italic?: boolean;
+  size: number;
   underline?: boolean;
 }
 
 export interface Text {
-  text: string;
   font: Font;
+  text: string;
 }

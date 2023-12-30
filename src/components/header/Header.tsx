@@ -1,9 +1,12 @@
+import { FC } from 'react'
 import Logo from '~/assets/icons/logo.png'
-import { Title } from './Title'
-import styles from './header.module.css'
 import { Menu } from './Menu'
+import { Title } from './Title'
+import styles from './Header.module.css'
 
-export function Header() {
+interface HeaderProps {}
+
+export const Header: FC<HeaderProps > = (_: HeaderProps ): JSX.Element => {
   return (
     <div className = {styles.header}>
       <img
