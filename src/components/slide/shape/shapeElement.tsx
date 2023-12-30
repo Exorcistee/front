@@ -1,4 +1,4 @@
-import { Shape } from '~/models/element/shapeTypes'
+import { Shape } from '~/model/element/shapeTypes'
 
 interface Props {
     Shape: Shape;

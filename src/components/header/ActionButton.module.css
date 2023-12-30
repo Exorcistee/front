@@ -1,28 +1,28 @@
 .actionButton {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background-color: #fafafa;
-    font-size: 16px;
-    color: #040303;
-    font-family: "Montserrat";
-    padding: 11px 16px;
-    border-radius: 8px;
-    transition: 250ms;
-    margin-right: 7px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .actionButton:hover {
-    background-color: #f62b7c;
-    transition: 250ms;
-  }
-  
-  .actionButton:active {
-    transform: scaleX(0.97) scaleY(0.97);
-  }
-  
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #fafafa;
+  font-size: 16px;
+  color: #040303;
+  font-family: "Montserrat";
+  padding: 11px 16px;
+  border-radius: 8px;
+  transition: 250ms;
+  margin-right: 7px;
+  display: flex;
+  align-items: center;
+}
+
+.actionButton:hover {
+  background-color: #f62b7c;
+  transition: 250ms;
+}
+
+.actionButton:active {
+  transform: scaleX(0.97) scaleY(0.97);
+}
+
 .actionButtonLabel {
   font-size: 16px;
   font-weight: bold;

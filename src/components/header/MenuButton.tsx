@@ -6,7 +6,7 @@ interface Props {
 }
 
 export function MenuButton({
-  label, onClick, 
+  label, onClick,
 }: Props) {
   return (
     <div

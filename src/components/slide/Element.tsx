@@ -1,4 +1,3 @@
-
 interface ElementSlideProps {
   element: string;
 }
@@ -43,6 +42,5 @@ export function ElementSlide(
         </img>
       </div>
     )
-
   }
 }

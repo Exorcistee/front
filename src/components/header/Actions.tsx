@@ -5,13 +5,13 @@ export function Actions (){
   return (
     <div className= { styles.actionBar }>
       <div className= {styles.actionMain}>
-        <ActionButton 
+        <ActionButton
           icon = "add"
           label = "Добавить слайд"
         />
         <ActionButton
           icon = "delete"
-          label = "delete"  
+          label = "delete"
         />
       </div>
       <ActionButton

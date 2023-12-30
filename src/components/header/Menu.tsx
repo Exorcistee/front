@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './header.module.css'
 import { MenuButton } from './MenuButton'
 
@@ -25,16 +24,16 @@ export function Menu() {
         label="Создать"
         onClick={() => {
           console.log('Pressed button <<Создать>>')
-        }}  
+        }}
       />
       <MenuButton
         label="Открыть"
         onClick={() => {
           console.log('Pressed button <<Открыть>>')
-        }}  
+        }}
       />
       <MenuButton
-        label="Сохранить" 
+        label="Сохранить"
         onClick={() => {
           console.log('Pressed button <<Сохранить>>')
           // Пример сохранения объекта JSON в файл
@@ -44,5 +43,4 @@ export function Menu() {
       />
     </div>
   )
-}  
-
+}

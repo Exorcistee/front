@@ -1,3 +1,3 @@
 export interface TypePresentation {
-    name: string;
+  name: string;
 }

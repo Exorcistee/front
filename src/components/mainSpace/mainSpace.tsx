@@ -8,7 +8,7 @@ export function mainSpace () {
         <Slide />
       </div>
     </div>
-  )    
+  )
 }
 
 export default mainSpace

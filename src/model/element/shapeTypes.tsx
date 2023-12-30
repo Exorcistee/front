@@ -1,31 +1,31 @@
 export interface Shape {
-    form: Triangle | Rectangle | Cirlce;
-    color: string;
-    borderColor: string;
+  form: Triangle | Rectangle | Cirlce;
+  color: string;
+  borderColor: string;
 }
 
 export interface Triangle {
-    firstAngle: Point;
-    secondAngle: Point;
-    thirdAngle: Point;
+  firstAngle: Point;
+  secondAngle: Point;
+  thirdAngle: Point;
 }
 
 export interface Rectangle {
-    leftPoint: Point;
-    rightPoint: Point;
+  leftPoint: Point;
+  rightPoint: Point;
 }
 
 export interface Cirlce {
-    radius: number;
-    center: Point;
+  radius: number;
+  center: Point;
 }
 
 export interface Size {
-    width: number;
-    height: number;
+  width: number;
+  height: number;
 }
 
 export interface Point {
-    x: number;
-    y: number;
+  x: number;
+  y: number;
 }

@@ -23,7 +23,6 @@ export function ActionButton({
           {label}
         </span>
       )}
-        
     </button>
   )
 }
