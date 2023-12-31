@@ -6,12 +6,11 @@
 Dev's:
 - [Urazaev Konstantin](https://github.com/Exorcistee)
 - [Lyashko Dmitriy](https://github.com/KREeDo5)
-- [Hasanov Il'saf](https://github.com/IlsafCreator)
-> [!WARNING]
-> При просмотре будет больно, лучше не смотреть.
+- [Ilsaf Khasanof](https://vk.com/teddy_whale)
 
-## Команды для запуска presentation maker'а (перед этим перейти в каталог my-app)
+## Список необходимых команды для запуска presentation maker'а
 ```
-npm install
-npm start
+**pnpm dev** - запуск проекта
+**pnpm lint** - проверка на единый стиль кода
+**pnpm build** - проверка на возможность запуска
 ```
