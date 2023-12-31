@@ -1,4 +1,7 @@
-import { FC } from 'react'
+import{
+  FC,
+  useRef,
+} from 'react'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { IBaseSlideShape } from '~/model/project/slide/element/shape/BaseSlideShape'
 import { IImage } from '~/model/project/slide/element/Image'
@@ -7,6 +10,7 @@ import { ImageElement } from './image/ImageElement'
 import { ShapeElement } from './shape/ShapeElement'
 import { SlideElementEnum } from '~/model/project/slide/element/SlideElementEnum'
 import { TextElement } from './text/TextElement'
+// import { useDragAndDrop } from '~/hooks/useDragAndDrop'
 
 interface SlideElementProps {
   element: IBaseSlideElement;
@@ -19,9 +23,24 @@ const _SHAPES = [
 ]
 
 export const SlideElement: FC<SlideElementProps> = ({ element }: SlideElementProps): JSX.Element => {
+
+  const ref = useRef<HTMLDivElement>(null)
+  // const initPosition = {
+  //   x: element.position.x,
+  //   y: element.position.y,
+  // }
+
+  // const position = useDragAndDrop(ref, initPosition)
+
+  // const style= {
+  //   position: Point,
+  // }
+
   if (element.type === SlideElementEnum.Text) {
     return (
-      <TextElement text={element as IText} />
+      <div ref={ref}>
+        <TextElement text={element as IText} />
+      </div>
     )
   }
 
