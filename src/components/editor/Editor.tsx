@@ -13,7 +13,7 @@ export const Editor: FC<EditorProps > = (_: EditorProps ): JSX.Element => {
       <Header />
       <Actions />
       <div className={styles['work-space']}>
-        <SlideList />
+        <SlideList slideList={[]} />
         <MainSpace />
       </div>
     </div>

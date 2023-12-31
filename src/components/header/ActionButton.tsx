@@ -3,7 +3,6 @@ import {
   FC,
 } from 'react'
 import styles from './ActionButton.module.css'
-import {addElement} from '../slide/Slide'
 
 interface ActionButtonProps {
   label?: string;

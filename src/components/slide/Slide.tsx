@@ -9,15 +9,15 @@ import styles from './Slide.module.css'
 
 interface _SlideElementsProps {
   elements: IBaseSlideElement[];
-  addElement: (newElement: IBaseSlideElement) => void;
+  // addElement: (newElement: IBaseSlideElement) => void;
 }
 
-const _SlideElements: FC<_SlideElementsProps> = ({ elements, addElement }: _SlideElementsProps): JSX.Element => {
+const _SlideElements: FC<_SlideElementsProps> = ({ elements }: _SlideElementsProps): JSX.Element => {
   const [_elementsList, _setElementsList] = useState<IBaseSlideElement[]>(elements)
 
-  addElement = (newElement: IBaseSlideElement) => {
-    _setElementsList(elements => [...elements, newElement])
-  }
+  // addElement = (newElement: IBaseSlideElement) => {
+  //   _setElementsList(elements => [...elements, newElement])
+  // }
 
   return (
     <>
@@ -47,18 +47,12 @@ export const Slide: FC<SlideProps> = ({
         ? (
           <div className={styles['slide-miniature']}>
             <div className={styles['slide-preview-mini']}>
-              <_SlideElements
-                elements={slide.slideElements}
-                addElement={}
-              />
+              <_SlideElements elements={slide.slideElements} />
             </div>
           </div>
         )
         : (
-          <_SlideElements
-            elements={slide.slideElements}
-            addElement={}/
-          >
+          <_SlideElements elements={slide.slideElements} />
         )
       }
     </div>
