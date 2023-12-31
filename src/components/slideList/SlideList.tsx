@@ -55,11 +55,12 @@ export const SlideList: FC<SlideListProps> = (props: SlideListProps): JSX.Elemen
 
   return (
     <div className={style['slide-list']}>
-      {slideList.map(slide => {
+      {slideList.map((slide, index) => {
         return (
           <Slide
             key={slide.id}
             isPreview
+            index={index + 1}
             slide={slide}
           />
         )

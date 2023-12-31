@@ -33,18 +33,24 @@ const _SlideElements: FC<_SlideElementsProps> = ({ elements }: _SlideElementsPro
 interface SlideProps {
   slide: ISlide;
   isPreview: boolean;
+  index: number;
 }
 
 export const Slide: FC<SlideProps> = ({
-  slide, isPreview,
+  slide, isPreview, index,
 }: SlideProps): JSX.Element => {
   return (
     <div className={!isPreview ? styles.slide : styles['slide-preview']}>
       {isPreview
         ? (
-          <div className={styles['slide-miniature']}>
-            <div className={styles['slide-preview-mini']}>
-              <_SlideElements elements={slide.slideElements} />
+          <div className={styles['slide-preview-row']}>
+            <span className={styles['slide-index']}>
+              {index}
+            </span>
+            <div className={styles['slide-miniature']}>
+              <div className={styles['slide-preview-mini']}>
+                <_SlideElements elements={slide.slideElements} />
+              </div>
             </div>
           </div>
         )

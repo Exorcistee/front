@@ -16,7 +16,7 @@
 }
 
 .slide-miniature:hover {
-  box-shadow: inset 4px 4px 80px rgb(0 0 0 / 5%);
+  box-shadow: inset 4px 4px 80px rgb(0 0 0 / 15%);
 }
 
 .slide-remove:hover {
@@ -33,6 +33,17 @@
   margin-left: -30px;
   overflow: hidden;
   border-radius: 0 8px 8px 0;
+}
+
+.slide-preview-row{
+  display: flex;
+  justify-content: space-between;
+
+  overflow: hidden;
+}
+
+.slide-index{
+  margin-right: 10px;
 }
 
 .slide-preview-mini {
