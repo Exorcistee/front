@@ -8,7 +8,7 @@ Dev's:
 - [Lyashko Dmitriy](https://github.com/KREeDo5)
 - [Ilsaf Khasanof](https://vk.com/teddy_whale)
 
-## Список необходимых команды для запуска presentation maker'а
+## Список необходимых команд для запуска presentation maker'а
 ```
 **pnpm dev** - запуск проекта
 **pnpm lint** - проверка на единый стиль кода

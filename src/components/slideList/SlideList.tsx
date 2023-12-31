@@ -6,7 +6,9 @@ import {
 import { ActionButton } from '../header/ActionButton' //TODO: удалить, если убираем кнопки из этого модуля
 import AddBoxIcon from '@mui/icons-material/AddBox' //TODO: удалить, если убираем кнопки из этого модуля
 import { ISlide } from '~/model/project/slide/Slide'
+import { Size } from '~/model/base/Size'
 import { Slide } from '../slide/Slide'
+import { Text } from '~/model/project/slide/element/Text'
 import style from './SlideList.module.css'
 
 interface SlideListProps {
@@ -19,10 +21,7 @@ export const SlideList: FC<SlideListProps> = (props: SlideListProps): JSX.Elemen
 
   useEffect(() => {
     // Пример генерации текста для каждого слайда (замените на свою логику)
-    const updatedSlideList = props.slideList.map(slide => ({
-      ...slide,
-      text: `Slide Text ${slide.id}`,
-    }))
+    const updatedSlideList = props.slideList.map(slide => ({ ...slide }))
     setSlideList(updatedSlideList)
   }, [props.slideList])
 
@@ -31,8 +30,16 @@ export const SlideList: FC<SlideListProps> = (props: SlideListProps): JSX.Elemen
     const newSlide: ISlide = {
       background: { color: 'red' }, // TODO: Цвет сейчас не меняется, по-умолчанию ставится белый
       id: Date.now(),
-      selectElements: [1],
-      slideElements: [], // TODO: Добавить текст с уникальным id
+      slideElements: [
+        new Text({
+          color: 'black',
+          family: '123214',
+          size: 13,
+        },
+        `TextId ${Date.now()}`,
+        new Size(1, 1)
+        ),
+      ],
     }
     setSlideList(prevSlideList => [...prevSlideList, newSlide])
   }

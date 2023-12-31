@@ -20,7 +20,7 @@ export const ActionButton: FC<ActionButtonProps> = ({
   return (
     <button
       className={styles['action-button']}
-      onClick={onClick} // Используем onClick, который принимает один из обработчиков
+      onClick={onClick}
     >
       {icon}
       {label && (
