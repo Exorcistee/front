@@ -1,0 +1,8 @@
+.contanier {
+  position: relative;
+}
+
+.box {
+  position: absolute;
+  cursor: grab;
+}

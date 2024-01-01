@@ -1,6 +1,8 @@
-import{
+import React, {
   FC,
   useRef,
+  useState,
+  useEffect,
 } from 'react'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { IBaseSlideShape } from '~/model/project/slide/element/shape/BaseSlideShape'
@@ -10,6 +12,8 @@ import { ImageElement } from './image/ImageElement'
 import { ShapeElement } from './shape/ShapeElement'
 import { SlideElementEnum } from '~/model/project/slide/element/SlideElementEnum'
 import { TextElement } from './text/TextElement'
+import styles from './Element.module.css'
+import { Size } from '~/model/base/Size'
 // import { useDragAndDrop } from '~/hooks/useDragAndDrop'
 
 interface SlideElementProps {
@@ -25,34 +29,126 @@ const _SHAPES = [
 export const SlideElement: FC<SlideElementProps> = ({ element }: SlideElementProps): JSX.Element => {
 
   const ref = useRef<HTMLDivElement>(null)
-  // const initPosition = {
-  //   x: element.position.x,
-  //   y: element.position.y,
-  // }
+  const refCont = useRef<HTMLDivElement>(null)
+  const isClicked = useRef<boolean>(false)
 
-  // const position = useDragAndDrop(ref, initPosition)
+  const text: IText = {
+    font: {
+      color: '#ffffff',
+      family: 'Arial',
+      size: 12,
+    },
+    text: 'Пися',
+    id: '1',
+    leftTopPoint: element.leftTopPoint,
+    rightBottomPoint: element.rightBottomPoint,
+    position: element.position,
+    size: element.size,
+    type: element.type,
+  }
 
-  // const style= {
-  //   position: Point,
-  // }
+  const [editableText, setEditableText] = useState(text.text)
+
+  const coords = useRef<{
+    startX: number;
+    startY: number;
+    lastX: number;
+    lastY: number;
+  }>({
+    startX: element.position.x,
+    startY: element.position.y,
+    lastX: 0,
+    lastY: 0,
+  })
+
+  const handleDoubleClick
+
+  useEffect(() => {
+    if (!ref.current || !refCont.current) return
+
+    const box = ref.current
+
+    const onMouseDown = (e: MouseEvent) => {
+      isClicked.current = true
+      coords.current.startX = e.clientX
+      coords.current.startY = e.clientY
+    }
+
+    const onMouseUp = (e: MouseEvent) => {
+      isClicked.current = false
+      coords.current.lastX = box.offsetLeft
+      coords.current.lastY = box.offsetTop
+    }
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (!isClicked.current) return
+
+      const nextX = e.clientX - coords.current.startX + coords.current.lastX
+      const nextY = e.clientY - coords.current.startY + coords.current.lastY
+
+      box.style.left = `${nextX}px`
+      box.style.top = `${nextY}px`
+    }
+
+    box.addEventListener('mousedown', onMouseDown)
+    document.addEventListener('mouseup', onMouseUp)
+    document.addEventListener('mousemove', onMouseMove)
+
+    const cleanup = () => {
+      box.removeEventListener('mousedown', onMouseDown)
+      document.removeEventListener('mouseup', onMouseUp)
+      document.removeEventListener('mousemove', onMouseMove)
+    }
+
+    return cleanup
+
+  }, [])
 
   if (element.type === SlideElementEnum.Text) {
     return (
-      <div ref={ref}>
-        <TextElement text={element as IText} />
+      <div
+        ref={refCont}
+        className={styles.contanier}
+      >
+        <div
+          ref={ref}
+          className={styles.box}
+        >
+          <TextElement text = {text} />
+        </div>
       </div>
     )
   }
 
   if (_SHAPES.includes(element.type)) {
     return (
-      <ShapeElement shape={element as IBaseSlideShape} />
+      <div
+        ref={refCont}
+        className={styles.contanier}
+      >
+        <div
+          ref={ref}
+          className={styles.box}
+        >
+          <ShapeElement shape={element as IBaseSlideShape} />
+        </div>
+      </div>
     )
   }
 
   if (element.type === SlideElementEnum.Image) {
     return (
-      <ImageElement image={element as IImage} />
+      <div
+        ref={refCont}
+        className={styles.contanier}
+      >
+        <div
+          ref={ref}
+          className={styles.box}
+        >
+          <ImageElement image={element as IImage} />
+        </div>
+      </div>
     )
   }
 

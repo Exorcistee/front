@@ -19,23 +19,66 @@ interface _SlideElementsProps {
 const _SlideElements: FC<_SlideElementsProps> = ({ elements }: _SlideElementsProps): JSX.Element => {
   const [elementsList, _setElementsList] = useState<IBaseSlideElement[]>(elements)
 
-  const addElement = () => {
+  const addText = () => {
     const newElement: IBaseSlideElement = {
       id: '1',
       leftTopPoint: {
-        x: 10,
-        y: 10,
+        x: 0,
+        y: 0,
       },
       position: {
-        x: 15,
-        y: 15,
+        x: 0,
+        y: 0,
       },
       rightBottomPoint: {
-        x: 20,
-        y: 20,
+        x: 0,
+        y: 0,
       },
       size: new Size(10,10),
       type: SlideElementEnum.Text,
+    }
+    _setElementsList(elementsList => [...elementsList, newElement])
+  }
+
+  const addShape = () => {
+    const newElement: IBaseSlideElement = {
+      color: '#ffc0cb',
+      id: '1',
+      leftTopPoint: {
+        x: 0,
+        y: 0,
+      },
+      position: {
+        x: 0,
+        y: 0,
+      },
+      rightBottomPoint: {
+        x: 0,
+        y: 0,
+      },
+      size: new Size(10, 10),
+      type: SlideElementEnum.Circle,
+    }
+    _setElementsList(elementsList => [...elementsList, newElement])
+  }
+
+  const addImage = () => {
+    const newElement: IBaseSlideElement = {
+      id: '1',
+      leftTopPoint: {
+        x: 0,
+        y: 0,
+      },
+      position: {
+        x: 0,
+        y: 0,
+      },
+      rightBottomPoint: {
+        x: 0,
+        y: 0,
+      },
+      size: new Size(10,10),
+      type: SlideElementEnum.Image,
     }
     _setElementsList(elementsList => [...elementsList, newElement])
   }
@@ -45,16 +88,28 @@ const _SlideElements: FC<_SlideElementsProps> = ({ elements }: _SlideElementsPro
       <ActionButton
         icon={<AcUnitIcon />}
         label=""
-        onClick={addElement}
+        onClick={addText}
       />
-      {elementsList.map(el => {
-        return (
-          <SlideElement
-            key={el.id}
-            element={el}
-          />
-        )
-      })}
+      <ActionButton
+        icon={<AcUnitIcon />}
+        label=""
+        onClick={addShape}
+      />
+      <ActionButton
+        icon={<AcUnitIcon />}
+        label=""
+        onClick={addImage}
+      />
+      <div className={styles.slide}>
+        {elementsList.map(el => {
+          return (
+            <SlideElement
+              key={el.id}
+              element={el}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }
