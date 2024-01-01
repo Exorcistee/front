@@ -1,6 +1,7 @@
 import { Actions } from '../header/Actions'
 import { FC } from 'react'
 import { Header } from '../header/Header'
+import { InfoSpace } from '../infoSpace/InfoSpace'
 import { MainSpace } from '../mainSpace/MainSpace'
 import { SlideList } from '../slideList/SlideList'
 import styles from './Editor.module.css'
@@ -15,6 +16,7 @@ export const Editor: FC<EditorProps > = (_: EditorProps ): JSX.Element => {
       <div className={styles['work-space']}>
         <SlideList slideList={[]} />
         <MainSpace />
+        <InfoSpace infoSpace={[]} />
       </div>
     </div>
   )
