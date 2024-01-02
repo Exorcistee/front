@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import styles from './Field.module.css'
 
 interface FieldProps {
@@ -5,9 +6,9 @@ interface FieldProps {
   children?: React.ReactNode;
 }
 
-export function Field({
+export const Field: FC<FieldProps> = ({
   label, children,
-}: FieldProps) {
+}: FieldProps): JSX.Element => {
   return (
     <div className={styles.field}>
       <span className={styles.fieldLabel}>{label}</span>

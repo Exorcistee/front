@@ -1,10 +1,11 @@
+import { FC } from 'react'
 import { FieldInput } from '../field/FieldInput'
 import { FieldSelect } from '../field/FieldSelect'
 import styles from './Form.module.css'
 
 interface ImageFormProps {}
 
-export function ImageForm({}: ImageFormProps) {
+export const ImageForm: FC<ImageFormProps> = (_: ImageFormProps): JSX.Element => {
   return (
     <div className={styles.form}>
       <div className={styles.headerForm}>

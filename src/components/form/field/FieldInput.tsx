@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import { Field } from './Field'
 import styles from './Field.module.css'
 
@@ -8,16 +9,17 @@ interface FieldInputProps {
   onChange?: (value: string) => void;
 }
 
-export function FieldInput({
+export const FieldInput: FC<FieldInputProps> = ({
   label, type, value, onChange,
-}: FieldInputProps) {
+}: FieldInputProps): JSX.Element => {
   return (
     <Field label={label}>
       <input
         className={styles.fieldInput}
         type={type}
         value={value}
-        onChange={(e) => onChange && onChange(e.target.value)}
+        onChange={(e) => { onChange && onChange(e.target.value); return void 0 }}
+
       />
       <span className={styles.fieldLabel}>px</span>
     </Field>

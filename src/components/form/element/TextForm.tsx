@@ -1,11 +1,12 @@
-import { FieldCheckbox } from '../field/FieldCheckbox'
+import { FC } from 'react'
 import { FieldInput } from '../field/FieldInput'
+import { FieldRadio } from '../field/FieldRadio'
 import { FieldSelect } from '../field/FieldSelect'
 import styles from './Form.module.css'
 
 interface TextFormProps {}
 
-export function TextForm({}: TextFormProps) {
+export const TextForm: FC<TextFormProps> = (_: TextFormProps): JSX.Element => {
   return (
     <div className={styles.form}>
       <div className={styles.headerForm}>
@@ -85,9 +86,9 @@ export function TextForm({}: TextFormProps) {
         ]}
         label={'Цвет'}
       />
-      <FieldCheckbox label={'Жирный'} />
-      <FieldCheckbox label={'Подчеркнутый'} />
-      <FieldCheckbox label={'Курсивный'} />
+      <FieldRadio label={'Жирный'} />
+      <FieldRadio label={'Подчеркнутый'} />
+      <FieldRadio label={'Курсивный'} />
     </div>
   )
 }

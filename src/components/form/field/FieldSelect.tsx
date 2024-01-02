@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import { Field } from './Field'
 import styles from './Field.module.css'
 
@@ -6,9 +7,9 @@ interface FieldSelectProps {
   items?: string[];
 }
 
-export function FieldSelect({
+export const FieldSelect: FC<FieldSelectProps> = ({
   label, items,
-}: FieldSelectProps) {
+}: FieldSelectProps): JSX.Element => {
   return (
     <Field label={label}>
       <select className={styles.fieldSelect}>
