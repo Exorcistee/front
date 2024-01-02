@@ -1,8 +1,7 @@
-import React, {
+import {
   FC,
-  useRef,
-  useState,
   useEffect,
+  useRef,
 } from 'react'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { IBaseSlideShape } from '~/model/project/slide/element/shape/BaseSlideShape'
@@ -13,7 +12,6 @@ import { ShapeElement } from './shape/ShapeElement'
 import { SlideElementEnum } from '~/model/project/slide/element/SlideElementEnum'
 import { TextElement } from './text/TextElement'
 import styles from './Element.module.css'
-import { Size } from '~/model/base/Size'
 // import { useDragAndDrop } from '~/hooks/useDragAndDrop'
 
 interface SlideElementProps {
@@ -38,16 +36,16 @@ export const SlideElement: FC<SlideElementProps> = ({ element }: SlideElementPro
       family: 'Arial',
       size: 12,
     },
-    text: 'Пися',
     id: '1',
     leftTopPoint: element.leftTopPoint,
-    rightBottomPoint: element.rightBottomPoint,
     position: element.position,
+    rightBottomPoint: element.rightBottomPoint,
     size: element.size,
+    text: 'Пися',
     type: element.type,
   }
 
-  const [editableText, setEditableText] = useState(text.text)
+  // const [editableText, setEditableText] = useState(text.text)
 
   const coords = useRef<{
     startX: number;
@@ -55,13 +53,13 @@ export const SlideElement: FC<SlideElementProps> = ({ element }: SlideElementPro
     lastX: number;
     lastY: number;
   }>({
-    startX: element.position.x,
-    startY: element.position.y,
     lastX: 0,
     lastY: 0,
+    startX: element.position.x,
+    startY: element.position.y,
   })
 
-  const handleDoubleClick
+  // const handleDoubleClick
 
   useEffect(() => {
     if (!ref.current || !refCont.current) return
@@ -74,10 +72,11 @@ export const SlideElement: FC<SlideElementProps> = ({ element }: SlideElementPro
       coords.current.startY = e.clientY
     }
 
-    const onMouseUp = (e: MouseEvent) => {
+    const onMouseUp = () => {
       isClicked.current = false
       coords.current.lastX = box.offsetLeft
       coords.current.lastY = box.offsetTop
+
     }
 
     const onMouseMove = (e: MouseEvent) => {
