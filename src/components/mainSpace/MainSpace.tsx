@@ -10,12 +10,16 @@ export const MainSpace: FC<MainSpaceProps > = (_: MainSpaceProps): JSX.Element =
       <div className={styles.slide}>
         <Slide
           slide={{
-            background:{ color: '123321' },
+            background: { color: '123321' },
             id: 1,
+            index: 1,
             selectElements: [],
             slideElements: [],
           }}
+          index={0}
           isPreview={false}
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
+          onCtrlSelectSlide={() => {}}
         />
       </div>
     </div>
