@@ -5,10 +5,9 @@ interface TextElementProps {
   text: IText;
 }
 
-export const TextElement: FC<TextElementProps> = (_: TextElementProps): JSX.Element => {
+export const TextElement: FC<TextElementProps> = ({ text }: TextElementProps): JSX.Element => {
+
   return (
-    <div>
-      <span>This is text</span>
-    </div>
+    <span>{text.text}</span>
   )
 }
