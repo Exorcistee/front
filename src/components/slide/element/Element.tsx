@@ -41,7 +41,7 @@ export const SlideElement: FC<SlideElementProps> = ({ element }: SlideElementPro
     position: element.position,
     rightBottomPoint: element.rightBottomPoint,
     size: element.size,
-    text: 'Пися',
+    text: 'default',
     type: element.type,
   }
 
