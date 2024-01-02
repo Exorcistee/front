@@ -11,9 +11,8 @@ export const MainSpace: FC<MainSpaceProps > = (_: MainSpaceProps): JSX.Element =
         <Slide
           slide={{
             background: { color: '123321' },
-            id: 1,
-            index: 1,
-            selectElements: [],
+            id: '1',
+            selectedElements: [],
             slideElements: [],
           }}
           index={0}

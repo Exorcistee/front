@@ -4,6 +4,10 @@ import {
   addTextElement,
 } from '~/store/actionsElements'
 import {
+  addSlide,
+  removeSelectedSlides,
+} from '~/store/slideActionCreators'
+import {
   useDispatch,
   useSelector,
 } from 'react-redux'
@@ -16,6 +20,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import { FC } from 'react'
 import FormatColorFill from '@mui/icons-material/FormatColorFill'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
+import { ISlide } from '~/model/project/slide/Slide'
 import InsertPhoto from '@mui/icons-material/InsertPhoto'
 import { RootState } from '~/store/reducer/rootReducer'
 import { Size } from '~/model/base/Size'
@@ -30,8 +35,23 @@ export const Actions: FC<ActionProps> = (_: ActionProps): JSX.Element => {
   const dispatch = useDispatch()
   const selectedElements = useSelector((state: RootState) => state.selectedElements) as Set<string>
   const selectedElementsArray = Array.from(selectedElements)
+
   const handleDelete= () => {
     dispatch(deleteElement(selectedElementsArray))
+  }
+
+  const handleAddSlide = () => {
+    const newSlide: ISlide = {
+      background: { color: '123' },
+      id: `${Date.now()}`,
+      selectedElements: [],
+      slideElements: [],
+    }
+    dispatch(addSlide(newSlide))
+  }
+
+  const handleDeleteSlide = () => {
+    dispatch(removeSelectedSlides())
   }
 
   const addText = () => {
@@ -104,10 +124,12 @@ export const Actions: FC<ActionProps> = (_: ActionProps): JSX.Element => {
         <ActionButton
           icon={<AddBoxIcon />}
           label="Добавить слайд"
+          onClick={handleAddSlide}
         />
         <ActionButton
           icon={<DeleteIcon />}
           label="Удалить слайд"
+          onClick={handleDeleteSlide}
         />
       </div>
       <ActionButton

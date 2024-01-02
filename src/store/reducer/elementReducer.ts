@@ -4,7 +4,7 @@ interface ElementState {
   elements: IBaseSlideElement[];
 }
 
-const initialState: ElementState= { elements: [] }
+const initialState: ElementState = { elements: [] }
 
 interface Action {
   type: string;
