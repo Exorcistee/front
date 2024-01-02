@@ -36,6 +36,7 @@ export const Actions: FC<ActionProps> = (_: ActionProps): JSX.Element => {
       <ActionButton
         icon={<TextFields />}
         label=""
+        onClick={() => {}}
       />
       <ActionButton
         icon={<InsertPhoto />}
