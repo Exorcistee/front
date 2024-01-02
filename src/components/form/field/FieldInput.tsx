@@ -13,15 +13,13 @@ export const FieldInput: FC<FieldInputProps> = ({
   label, type, value, onChange,
 }: FieldInputProps): JSX.Element => {
   return (
-    <Field label={label}>
+    <Field label={label + ' (px)'}>
       <input
         className={styles.fieldInput}
         type={type}
         value={value}
         onChange={(e) => { onChange && onChange(e.target.value); return void 0 }}
-
       />
-      <span className={styles.fieldLabel}>px</span>
     </Field>
   )
 }

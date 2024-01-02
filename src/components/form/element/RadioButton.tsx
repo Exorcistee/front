@@ -11,7 +11,7 @@ export const RadioButton: FC<RadioButtonProps> =({
 }: RadioButtonProps): JSX.Element => {
   return (
     <div
-      className={`${styles.RadioButton} ${checked && styles.checked}`}
+      className={`${styles.radioButton} ${checked && styles.checked}`}
       onClick={onChecked}
     >
       {checked && <span className={styles.checkMark}></span>}

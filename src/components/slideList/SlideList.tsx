@@ -13,12 +13,12 @@ import style from './SlideList.module.css'
 
 interface SlideListProps {
   slideList: ISlide[];
-  selectedSlides: number[];
+  selectedSlides?: number[];
 }
 
 export const SlideList: FC<SlideListProps> = (props: SlideListProps): JSX.Element => {
   const [slideList, setSlideList] = useState<ISlide[]>(props.slideList)
-  const [selectedSlides, setSelectedSlides] = useState<number[]>(props.selectedSlides)
+  const [selectedSlides, setSelectedSlides] = useState<number[]>(props.selectedSlides ?? [])
 
   useEffect(() => {
     const updatedSlideList = props.slideList.map(slide => ({ ...slide }))
