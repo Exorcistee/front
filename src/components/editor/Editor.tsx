@@ -1,13 +1,13 @@
 import { Actions } from '../header/Actions'
 import { FC } from 'react'
 import { Header } from '../header/Header'
+import { IText } from '~/model/project/slide/element/Text'
 import { InfoSpace } from '../infoSpace/InfoSpace'
 import { MainSpace } from '../mainSpace/MainSpace'
-import { SlideList } from '../slideList/SlideList'
-import styles from './Editor.module.css'
-import { Text } from '~/model/project/slide/element/Text'
 import { Size } from '~/model/base/Size'
-import { IText } from '~/model/project/slide/element/Text'
+import { SlideList } from '../slideList/SlideList'
+import { Text } from '~/model/project/slide/element/Text'
+import styles from './Editor.module.css'
 
 interface EditorProps {}
 
