@@ -1,4 +1,3 @@
-
 export function uuid4(length = 8) {
   let result = ''
   const characters =

@@ -1,4 +1,8 @@
 import {
+  FC,
+  MouseEvent,
+} from 'react'
+import {
   deselectElement,
   removeAllElements,
   selectElement,
@@ -7,10 +11,8 @@ import {
   useDispatch,
   useSelector,
 } from 'react-redux'
-import { FC } from 'react'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { ISlide } from '~/model/project/slide/Slide'
-import { MouseEvent } from 'react'
 import { RootState } from '~/store/reducer/rootReducer'
 import { SlideElement } from './element/Element'
 import styles from './Slide.module.css'
@@ -58,12 +60,13 @@ const _SlideElements: FC<_SlideElementsProps> = (): JSX.Element => {
 interface SlideProps {
   slide: ISlide;
   isPreview: boolean;
+  isSelected?: boolean;
   index: number;
   onCtrlSelectSlide: (index: number) => void;
 }
 
 export const Slide: FC<SlideProps> = ({
-  slide, isPreview, index, onCtrlSelectSlide,
+  slide, isPreview, isSelected, index, onCtrlSelectSlide,
 }: SlideProps): JSX.Element => {
   const handleClick = (event: MouseEvent) => {
     if (event.ctrlKey || event.metaKey) {
@@ -85,7 +88,7 @@ export const Slide: FC<SlideProps> = ({
             <span className={styles['slide-index']}>
               {index+1}
             </span>
-            <div className={styles[slide.isSelected ? 'slide-miniature-selected' : 'slide-miniature']}>
+            <div className={styles[isSelected ? 'slide-miniature-selected' : 'slide-miniature']}>
               <div className={styles['slide-preview-mini']}>
                 <_SlideElements elements={slide.slideElements} />
               </div>
