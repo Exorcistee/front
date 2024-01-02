@@ -12,10 +12,11 @@ import { ShapeElement } from './shape/ShapeElement'
 import { SlideElementEnum } from '~/model/project/slide/element/SlideElementEnum'
 import { TextElement } from './text/TextElement'
 import styles from './Element.module.css'
-// import { useDragAndDrop } from '~/hooks/useDragAndDrop'
 
 interface SlideElementProps {
   element: IBaseSlideElement;
+  className: string;
+  onClick: (event: React.MouseEvent) => void;
 }
 
 const _SHAPES = [
@@ -24,7 +25,11 @@ const _SHAPES = [
   SlideElementEnum.Triangle,
 ]
 
-export const SlideElement: FC<SlideElementProps> = ({ element }: SlideElementProps): JSX.Element => {
+export const SlideElement: FC<SlideElementProps> = ({
+  element,
+  className,
+  onClick,
+}: SlideElementProps): JSX.Element => {
 
   const ref = useRef<HTMLDivElement>(null)
   const refCont = useRef<HTMLDivElement>(null)
@@ -36,7 +41,7 @@ export const SlideElement: FC<SlideElementProps> = ({ element }: SlideElementPro
       family: 'Arial',
       size: 12,
     },
-    id: '1',
+    id: `${Date.now()}`,
     leftTopPoint: element.leftTopPoint,
     position: element.position,
     rightBottomPoint: element.rightBottomPoint,
@@ -44,8 +49,6 @@ export const SlideElement: FC<SlideElementProps> = ({ element }: SlideElementPro
     text: 'default',
     type: element.type,
   }
-
-  // const [editableText, setEditableText] = useState(text.text)
 
   const coords = useRef<{
     startX: number;
@@ -58,8 +61,6 @@ export const SlideElement: FC<SlideElementProps> = ({ element }: SlideElementPro
     startX: element.position.x,
     startY: element.position.y,
   })
-
-  // const handleDoubleClick
 
   useEffect(() => {
     if (!ref.current || !refCont.current) return
@@ -107,13 +108,17 @@ export const SlideElement: FC<SlideElementProps> = ({ element }: SlideElementPro
     return (
       <div
         ref={refCont}
-        className={styles.contanier}
+        className={`${styles.contanier} ${className}`}
       >
         <div
           ref={ref}
-          className={styles.box}
+          className={`${styles.box} ${className}`}
+          onClick={onClick}
         >
-          <TextElement text = {text} />
+          <TextElement
+            key={text.id}
+            text = {text}
+          />
         </div>
       </div>
     )
@@ -123,11 +128,12 @@ export const SlideElement: FC<SlideElementProps> = ({ element }: SlideElementPro
     return (
       <div
         ref={refCont}
-        className={styles.contanier}
+        className={`${styles.contanier} ${className}`}
       >
         <div
           ref={ref}
-          className={styles.box}
+          className={`${styles.box} ${className}`}
+          onClick={onClick}
         >
           <ShapeElement shape={element as IBaseSlideShape} />
         </div>
@@ -139,11 +145,12 @@ export const SlideElement: FC<SlideElementProps> = ({ element }: SlideElementPro
     return (
       <div
         ref={refCont}
-        className={styles.contanier}
+        className={`${styles.contanier} ${className}`}
       >
         <div
           ref={ref}
           className={styles.box}
+          onClick={onClick}
         >
           <ImageElement image={element as IImage} />
         </div>
