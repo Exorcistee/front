@@ -7,7 +7,7 @@
   font-size: 16px;
   color: #040303;
   cursor: pointer;
-  background-color: #fafafa;
+  background-color: #ffa05200;
   border: none;
   border-radius: 8px;
   outline: none;
@@ -15,7 +15,7 @@
 }
 
 .action-button:hover {
-  background-color: #f62b7c;
+  background-color: #ffa052;
   transition: 250ms;
 }
 

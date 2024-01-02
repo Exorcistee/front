@@ -4,7 +4,7 @@
   padding: 6px 8px;
   font-size: 16px;
   font-weight: 900;
-  color: #727272;
+  color: #383838;
   cursor: pointer;
   user-select: none;
   border-radius: 8px;
@@ -17,7 +17,7 @@
 }
 
 .menu-button:hover {
-  background-color: #f2f2f2;
+  background-color: #ffa052;
 }
 
 .buttonIcon {

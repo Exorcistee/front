@@ -1,0 +1,59 @@
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 8px;
+  background: #fbb5659e;
+  border-radius: 10px;
+}
+
+.fieldLabel {
+  font-size: 16px;
+  color: #000;
+}
+
+.fieldValue {
+  display: flex;
+  align-items: center;
+}
+
+.fieldInput {
+  width: 70px;
+  height: 20px;
+  padding: 5px 7px;
+  font-size: 14px;
+  background: #f9bf6d;
+  border: 0px;
+  border-radius: 10px;
+  outline: none;
+}
+
+.fieldInput:hover  {
+  border: 2px solid #373737;
+}
+
+.fieldInput:focus  {
+  border: 2px solid #373737;
+}
+
+
+.fieldSelect {
+  width: 160px;
+  height: 32px;
+  padding: 5px 7px;
+  font-size: 14px;
+  background: #f9bf6d;
+  border: 0px;
+  border-radius: 20px;
+  outline: none;
+}
+
+.fieldSelect:hover {
+  border: 2px solid #373737;
+}
+
+.fieldSelect:focus {
+  border: 2px solid #373737;
+}
