@@ -12,6 +12,7 @@ import styles from './Editor.module.css'
 interface EditorProps {}
 
 export const Editor: FC<EditorProps > = (_: EditorProps ): JSX.Element => {
+
   return (
     <div className={styles.main}>
       <Header />

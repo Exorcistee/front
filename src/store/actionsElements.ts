@@ -52,3 +52,4 @@ export const removeAllElements = () => {
     type: 'REMOVE_ALL',
   }
 }
+
