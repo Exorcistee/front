@@ -1,6 +1,7 @@
 import {
   CSSProperties,
   FC,
+  MouseEvent,
 } from 'react'
 import styles from './ActionButton.module.css'
 
@@ -8,7 +9,7 @@ interface ActionButtonProps {
   label?: string;
   icon: React.ReactNode;
   style?: CSSProperties;
-  onClick?:() => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const ActionButton: FC<ActionButtonProps> = ({

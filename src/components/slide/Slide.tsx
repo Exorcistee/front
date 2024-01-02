@@ -6,6 +6,7 @@ import AcUnitIcon from '@mui/icons-material/AcUnit'
 import { ActionButton } from '../header/ActionButton'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { ISlide } from '~/model/project/slide/Slide'
+import { MouseEvent } from 'react'
 import { Size } from '~/model/base/Size'
 import { SlideElement } from './element/Element'
 import { SlideElementEnum } from '~/model/project/slide/element/SlideElementEnum'
@@ -117,18 +118,37 @@ const _SlideElements: FC<_SlideElementsProps> = ({ elements }: _SlideElementsPro
 interface SlideProps {
   slide: ISlide;
   isPreview: boolean;
+  index: number;
+  onCtrlSelectSlide: (index: number) => void;
 }
 
 export const Slide: FC<SlideProps> = ({
-  slide, isPreview,
+  slide, isPreview, index, onCtrlSelectSlide,
 }: SlideProps): JSX.Element => {
+  const handleClick = (event: MouseEvent) => {
+    if (event.ctrlKey || event.metaKey) {
+      event.preventDefault()
+    }
+    if (event.ctrlKey){
+      onCtrlSelectSlide(index)
+    }
+  }
+
   return (
-    <div className={!isPreview ? styles.slide : styles['slide-preview']}>
+    <div
+      className={!isPreview ? styles.slide : styles['slide-preview']}
+      onClick={handleClick}
+    >
       {isPreview
         ? (
-          <div className={styles['slide-miniature']}>
-            <div className={styles['slide-preview-mini']}>
-              <_SlideElements elements={slide.slideElements} />
+          <div className={styles['slide-preview-row']}>
+            <span className={styles['slide-index']}>
+              {index+1}
+            </span>
+            <div className={styles[slide.isSelected ? 'slide-miniature-selected' : 'slide-miniature']}>
+              <div className={styles['slide-preview-mini']}>
+                <_SlideElements elements={slide.slideElements} />
+              </div>
             </div>
           </div>
         )
