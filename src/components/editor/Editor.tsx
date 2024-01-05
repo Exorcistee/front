@@ -6,6 +6,7 @@ import {
 import { Actions } from '../header/Actions'
 import { Header } from '../header/Header'
 import { ISlide } from '~/model/project/slide/Slide'
+import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { MainSpace } from '../mainSpace/MainSpace'
 import { Size } from '~/model/base/Size'
 import { SlideList } from '../slideList/SlideList'
@@ -19,7 +20,11 @@ interface EditorProps {
 export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
   const [presentationData, setPresentationData] = useState<ISlide[]>(props.slides ?? [])
   const [selectedSlides, setSelectedSlides] = useState<number[]>([])
-
+  const [elements, setElements] = useState<IBaseSlideElement[]>([])
+  const addElement = (newElement: IBaseSlideElement) => {
+    setElements([...elements, newElement])
+  }
+  
   useEffect(() => {
     const updatedSlides = presentationData.map(slide => ({ ...slide }))
     setPresentationData(updatedSlides)
@@ -145,6 +150,7 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
       <Actions
         handleAddSlide={handleAddSlide}
         handleDeleteSlide={handleDeleteSlide}
+        onAddElement={addElement}
       />
       <div className={styles['work-space']}>
         <SlideList
@@ -152,7 +158,10 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
           selectedSlides={selectedSlides}
           slideList={presentationData}
         />
-        <MainSpace />
+        <MainSpace
+          elements={elements}
+          setElements={setElements}
+        />
       </div>
     </div>
   )

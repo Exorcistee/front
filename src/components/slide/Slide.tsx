@@ -1,112 +1,27 @@
-import {
-  FC,
-  useState,
-} from 'react'
-import AcUnitIcon from '@mui/icons-material/AcUnit'
-import { ActionButton } from '../header/ActionButton'
+import { FC } from 'react'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { ISlide } from '~/model/project/slide/Slide'
 import { MouseEvent } from 'react'
-import { Size } from '~/model/base/Size'
 import { SlideElement } from './element/Element'
-import { SlideElementEnum } from '~/model/project/slide/element/SlideElementEnum'
 import styles from './Slide.module.css'
 
 interface _SlideElementsProps {
   elements: IBaseSlideElement[];
-
+  setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
 }
 
-const _SlideElements: FC<_SlideElementsProps> = ({ elements }: _SlideElementsProps): JSX.Element => {
-  const [elementsList, _setElementsList] = useState<IBaseSlideElement[]>(elements)
-
-  const addText = () => {
-    const newElement: IBaseSlideElement = {
-      id: '1',
-      leftTopPoint: {
-        x: 0,
-        y: 0,
-      },
-      position: {
-        x: 0,
-        y: 0,
-      },
-      rightBottomPoint: {
-        x: 0,
-        y: 0,
-      },
-      size: new Size(10,10),
-      type: SlideElementEnum.Text,
-    }
-    _setElementsList(elementsList => [...elementsList, newElement])
-  }
-
-  const addShape = () => {
-    const newElement: IBaseSlideElement = {
-      color: '#ffc0cb',
-      id: '1',
-      leftTopPoint: {
-        x: 0,
-        y: 0,
-      },
-      position: {
-        x: 0,
-        y: 0,
-      },
-      rightBottomPoint: {
-        x: 0,
-        y: 0,
-      },
-      size: new Size(10, 10),
-      type: SlideElementEnum.Circle,
-    }
-    _setElementsList(elementsList => [...elementsList, newElement])
-  }
-
-  const addImage = () => {
-    const newElement: IBaseSlideElement = {
-      id: '1',
-      leftTopPoint: {
-        x: 0,
-        y: 0,
-      },
-      position: {
-        x: 0,
-        y: 0,
-      },
-      rightBottomPoint: {
-        x: 0,
-        y: 0,
-      },
-      size: new Size(10,10),
-      type: SlideElementEnum.Image,
-    }
-    _setElementsList(elementsList => [...elementsList, newElement])
-  }
-
+const _SlideElements: FC<_SlideElementsProps> = ({
+  elements, setElements,
+}: _SlideElementsProps): JSX.Element => {
   return (
     <div>
-      <ActionButton
-        icon={<AcUnitIcon />}
-        label=""
-        onClick={addText}
-      />
-      <ActionButton
-        icon={<AcUnitIcon />}
-        label=""
-        onClick={addShape}
-      />
-      <ActionButton
-        icon={<AcUnitIcon />}
-        label=""
-        onClick={addImage}
-      />
       <div className={styles.slide}>
-        {elementsList.map(el => {
+        {elements.map(el => {
           return (
             <SlideElement
               key={el.id}
               element={el}
+              setElements={setElements}
             />
           )
         })}
@@ -120,10 +35,11 @@ interface SlideProps {
   isPreview: boolean;
   index: number;
   onCtrlSelectSlide: (index: number) => void;
+  setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
 }
 
 export const Slide: FC<SlideProps> = ({
-  slide, isPreview, index, onCtrlSelectSlide,
+  slide, isPreview, index, onCtrlSelectSlide, setElements,
 }: SlideProps): JSX.Element => {
   const handleClick = (event: MouseEvent) => {
     if (event.ctrlKey || event.metaKey) {
@@ -147,13 +63,19 @@ export const Slide: FC<SlideProps> = ({
             </span>
             <div className={styles[slide.isSelected ? 'slide-miniature-selected' : 'slide-miniature']}>
               <div className={styles['slide-preview-mini']}>
-                <_SlideElements elements={slide.slideElements} />
+                <_SlideElements
+                  elements={slide.slideElements}
+                  setElements={setElements}
+                />
               </div>
             </div>
           </div>
         )
         : (
-          <_SlideElements elements={slide.slideElements} />
+          <_SlideElements
+            elements={slide.slideElements}
+            setElements={setElements}
+          />
         )
       }
     </div>
