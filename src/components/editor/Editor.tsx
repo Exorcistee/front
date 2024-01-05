@@ -5,8 +5,8 @@ import {
 } from 'react'
 import { Actions } from '../header/Actions'
 import { Header } from '../header/Header'
-import { ISlide } from '~/model/project/slide/Slide'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
+import { ISlide } from '~/model/project/slide/Slide'
 import { MainSpace } from '../mainSpace/MainSpace'
 import { Size } from '~/model/base/Size'
 import { SlideList } from '../slideList/SlideList'
@@ -24,11 +24,12 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
   const addElement = (newElement: IBaseSlideElement) => {
     setElements([...elements, newElement])
   }
-  
+
   useEffect(() => {
     const updatedSlides = presentationData.map(slide => ({ ...slide }))
     setPresentationData(updatedSlides)
-  }, [presentationData])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []) //TODO: add presentationData
 
   const handleSelectSlide = (index: number) => {
     setPresentationData((prevSlideList) => {

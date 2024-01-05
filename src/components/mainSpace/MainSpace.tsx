@@ -26,6 +26,7 @@ export const MainSpace: FC<MainSpaceProps > = ( {
           index={1}
           isPreview={false}
           setElements={setElements}
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           onCtrlSelectSlide={() => {}}
         />
       </div>

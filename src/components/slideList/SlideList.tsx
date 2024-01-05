@@ -26,7 +26,7 @@ export const SlideList: FC<SlideListProps> = (props: SlideListProps): JSX.Elemen
             isPreview
             index={index}
             slide={slide}
-            onCtrlSelectSlide={() => { props.handleSelectSlide(index) }}
+            onCtrlSelectSlide={() => { props.handleSelectSlide(index) } }
           />
         )
       })}

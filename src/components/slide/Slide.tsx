@@ -7,7 +7,7 @@ import styles from './Slide.module.css'
 
 interface _SlideElementsProps {
   elements: IBaseSlideElement[];
-  setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  setElements?: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
 }
 
 const _SlideElements: FC<_SlideElementsProps> = ({
@@ -21,7 +21,8 @@ const _SlideElements: FC<_SlideElementsProps> = ({
             <SlideElement
               key={el.id}
               element={el}
-              setElements={setElements}
+              // eslint-disable-next-line @typescript-eslint/no-empty-function
+              setElements={setElements ?? (() => {})}
             />
           )
         })}
@@ -35,7 +36,7 @@ interface SlideProps {
   isPreview: boolean;
   index: number;
   onCtrlSelectSlide: (index: number) => void;
-  setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  setElements?: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
 }
 
 export const Slide: FC<SlideProps> = ({
