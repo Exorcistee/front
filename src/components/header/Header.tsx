@@ -4,9 +4,12 @@ import { Menu } from './Menu'
 import { Title } from './Title'
 import styles from './Header.module.css'
 
-interface HeaderProps {}
+interface HeaderProps {
+  openPresentation: (fileName?: string) => void;
+  savePresentationToFile: (fileName?: string) => void;
+}
 
-export const Header: FC<HeaderProps > = (_: HeaderProps ): JSX.Element => {
+export const Header: FC<HeaderProps > = (props: HeaderProps ): JSX.Element => {
   return (
     <div className={styles.header}>
       <img
@@ -15,7 +18,10 @@ export const Header: FC<HeaderProps > = (_: HeaderProps ): JSX.Element => {
       />
       <div className={styles['presentation-info']}>
         <Title />
-        <Menu />
+        <Menu
+          openPresentation={props.openPresentation}
+          savePresentationToFile = {props.savePresentationToFile}
+        />
       </div>
     </div>
   )

@@ -17,10 +17,12 @@ import TextFields from '@mui/icons-material/TextFields'
 import styles from './Actions.module.css'
 
 interface ActionProps {
+  handleAddSlide: () => void;
+  handleDeleteSlide: () => void;
   onAddElement: (newElement: IBaseSlideElement) => void;
 }
 
-export const Actions: FC<ActionProps> = ( { onAddElement } : ActionProps): JSX.Element => {
+export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
 
   const addNewTextElement = () => {
     const newElementText: IText = {
@@ -46,7 +48,7 @@ export const Actions: FC<ActionProps> = ( { onAddElement } : ActionProps): JSX.E
       text: 'default',
       type: SlideElementEnum.Text,
     }
-    onAddElement(newElementText)
+    props.onAddElement(newElementText)
   }
 
   const addNewShapeElement = () => {
@@ -69,7 +71,7 @@ export const Actions: FC<ActionProps> = ( { onAddElement } : ActionProps): JSX.E
       size: new Size(10, 10),
       type: SlideElementEnum.Circle,
     }
-    onAddElement(newElementShape)
+    props.onAddElement(newElementShape)
   }
 
   const addNewImageElement = () => {
@@ -91,19 +93,20 @@ export const Actions: FC<ActionProps> = ( { onAddElement } : ActionProps): JSX.E
       size: new Size(10,10),
       type: SlideElementEnum.Image,
     }
-    onAddElement(newElementImage)
+    props.onAddElement(newElementImage)
   }
-
   return (
     <div className={styles['action-bar']}>
       <div className={styles['action-main']}>
         <ActionButton
           icon={<AddBoxIcon />}
           label="Добавить слайд"
+          onClick={props.handleAddSlide}
         />
         <ActionButton
           icon={<DeleteIcon />}
           label="Удалить слайд"
+          onClick={props.handleDeleteSlide}
         />
       </div>
       <ActionButton
