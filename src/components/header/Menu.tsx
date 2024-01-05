@@ -3,18 +3,23 @@ import { MenuButton } from './MenuButton'
 import styles from './Menu.module.css'
 
 interface MenuProps {
+  openPresentation: (fileName?: string) => void;
   savePresentationToFile: (fileName?: string) => void;
 }
 
-export const Menu: FC<MenuProps> = ({ savePresentationToFile }: MenuProps): JSX.Element => {
+export const Menu: FC<MenuProps> = (props: MenuProps): JSX.Element => {
   return (
     <div className={styles['presentation-menu-bar']}>
-      <MenuButton label="Создать" />
-      <MenuButton label="Открыть" />
+      <MenuButton
+        label="Открыть"
+        onClick={() => {
+          props.openPresentation()
+        }}
+      />
       <MenuButton
         label="Сохранить"
         onClick={() => {
-          savePresentationToFile()
+          props.savePresentationToFile()
         }}
       />
     </div>

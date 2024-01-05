@@ -56,9 +56,57 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
     saveTextToFile(text, fileName ?? 'presentation.json')
   }
 
+  const openPresentation = async () => {
+    try {
+      const fileInput = document.createElement('input')
+      fileInput.type = 'file'
+      fileInput.accept = '.json'
+      const fileSelectedPromise = new Promise<void>((resolve) => {
+        fileInput.addEventListener('change', async (event) => {
+          const files = (event.target as HTMLInputElement).files
+          if (files && files.length > 0) {
+            const file = files[0]
+            const fileContent = await readFileAsync(file)
+            if (fileContent) {
+              const presentationData = JSON.parse(fileContent) as ISlide[]
+              setPresentationData(presentationData)
+            }
+          }
+          resolve()
+        })
+      })
+      document.body.appendChild(fileInput)
+      await Promise.resolve()
+      fileInput.click()
+      await fileSelectedPromise
+      document.body.removeChild(fileInput)
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('Error opening file dialog:', error)
+    }
+  }
+
+  const readFileAsync = (file: File): Promise<string | null> => {
+    return new Promise((resolve) => {
+      const reader = new FileReader()
+      reader.onload = (event) => {
+        if (event.target) {
+          const content = event.target.result as string
+          resolve(content)
+        } else {
+          resolve(null)
+        }
+      }
+      reader.onerror = () => {
+        resolve(null)
+      }
+      reader.readAsText(file)
+    })
+  }
+
   const handleAddSlide = () => {
     const newSlide: ISlide = {
-      background: { color: 'red' }, // TODO: Цвет сейчас не меняется, по-умолчанию ставится белый
+      background: { color: 'red' }, // TODO: Сейчас данные хардкодятся, в будущем реализовать save текущих слайдов
       id: Date.now(),
       index: presentationData.length,
       slideElements: [
@@ -90,7 +138,10 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
 
   return (
     <div className={styles.main}>
-      <Header savePresentationToFile = {savePresentationToFile} />
+      <Header
+        openPresentation={openPresentation}
+        savePresentationToFile = {savePresentationToFile}
+      />
       <Actions
         handleAddSlide={handleAddSlide}
         handleDeleteSlide={handleDeleteSlide}
