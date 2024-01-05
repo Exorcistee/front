@@ -10,6 +10,8 @@ Dev's:
 
 ## Список необходимых команд для запуска presentation maker'а
 ```
+**pnpm add react redux react-redux**
+**pnpm i**
 **pnpm add react**
 **pnpm dev** - запуск проекта
 **pnpm lint** - проверка на единый стиль кода
