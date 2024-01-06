@@ -8,14 +8,36 @@ interface MainSpaceProps {
   setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
   selectElements: (idElement: string) => void;
   selectedElements: string[];
+  backgroundColor: string;
 }
 
 export const MainSpace: FC<MainSpaceProps > = ( {
-  elements, setElements, selectElements, selectedElements,
+  elements, setElements, selectElements, selectedElements, backgroundColor,
 } : MainSpaceProps): JSX.Element => {
+  const russianToEnglishColor = (color: string): string => {
+    const colorsMap: Record<string, string> = {
+      'белый': 'white',
+      'желтый': 'yellow',
+      'зеленый': 'green',
+      'красный': 'red',
+      'оранжевый': 'orange',
+      'розовый': 'pink',
+      'серый': 'grey',
+      'синий': 'blue',
+      'фиолетовый': 'purple',
+      'черный': 'black',
+    }
+
+    return colorsMap[color]
+  }
+  const englishBackgroundColor = russianToEnglishColor(backgroundColor)
+
   return (
     <div className={styles.background}>
-      <div className={styles.slide}>
+      <div
+        className={styles.slide}
+        style={{ backgroundColor: englishBackgroundColor }}
+      >
         <Slide
           key={Date.now().toString()}
           slide={{

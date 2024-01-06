@@ -23,6 +23,7 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
   const [presentationData, setPresentationData] = useState<ISlide[]>(props.slides ?? [])
   const [selectedSlides, setSelectedSlides] = useState<number[]>([])
   const [elements, setElements] = useState<IBaseSlideElement[]>([])
+  const [mainSpaceColor, setMainSpaceColor] = useState<string>('белый')
   const addElement = (newElement: IBaseSlideElement) => {
     setElements([...elements, newElement])
   }
@@ -161,6 +162,10 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
     setSelectedSlides([])
   }
 
+  const fillSlide = (color: string) => {
+    setMainSpaceColor(color)
+  }
+
   return (
     <div className={styles.main}>
       <Header
@@ -172,6 +177,7 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
         handleAddSlide={handleAddSlide}
         handleDeleteSlide={handleDeleteSlide}
         onAddElement={addElement}
+        onColorChange={fillSlide}
       />
       <div className={styles['work-space']}>
         <SlideList
@@ -183,6 +189,7 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
           slideList={presentationData}
         />
         <MainSpace
+          backgroundColor={mainSpaceColor}
           elements={elements}
           selectElements={selectElement}
           selectedElements={selectedElements}
