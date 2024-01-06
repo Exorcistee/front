@@ -1,7 +1,4 @@
-import {
-  FC,
-  useEffect,
-} from 'react'
+import { FC } from 'react'
 import { IForm } from '~/model/project/form/Form'
 import { IImage } from '~/model/project/slide/element/Image'
 import { IText } from '~/model/project/slide/element/Text'

@@ -1,5 +1,5 @@
 import { Background } from './Background'
-import { IBaseSlideElement } from './element/BaseSlideElement'
+import { SlideElementAll } from '~/components/editor/Editor'
 
 export interface ISlide {
   background: Background;
@@ -7,5 +7,5 @@ export interface ISlide {
   index: number;
   isSelected?: boolean;
   selectedElements: string[];
-  slideElements: IBaseSlideElement[];
+  slideElements: SlideElementAll[];
 }

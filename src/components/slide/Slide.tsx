@@ -2,14 +2,14 @@ import {
   FC,
   MouseEvent,
 } from 'react'
-import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { ISlide } from '~/model/project/slide/Slide'
 import { SlideElement } from './element/Element'
+import { SlideElementAll } from '../editor/Editor'
 import styles from './Slide.module.css'
 
 interface _SlideElementsProps {
-  elements: IBaseSlideElement[];
-  setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  elements: SlideElementAll[];
+  setElements: React.Dispatch<React.SetStateAction<SlideElementAll[]>>;
   selectElements: (idElement: string) => void;
   selectedElements: string[];
 }

@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { ISlide } from '~/model/project/slide/Slide'
 import { Slide } from '../slide/Slide'
 import { SlideElementAll } from '../editor/Editor'
