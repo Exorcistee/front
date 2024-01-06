@@ -1,10 +1,14 @@
+import {
+  FC,
+  useState,
+} from 'react'
 import { ActionButton } from './ActionButton'
 import AddBoxIcon from '@mui/icons-material/AddBox'
 import Category from '@mui/icons-material/Category'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { FC } from 'react'
+import { FieldSelect } from '../form/field/FieldSelect'
 import FormatColorFill from '@mui/icons-material/FormatColorFill'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { IBaseSlideShape } from '~/model/project/slide/element/shape/BaseSlideShape'
@@ -24,6 +28,11 @@ interface ActionProps {
 }
 
 export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
+  const [isFieldSelectVisible, setFieldSelectVisible] = useState(false)
+  const fillBackground = () => {
+    setFieldSelectVisible(!isFieldSelectVisible)
+  }
+
   const addNewTextElement = () => {
     const newElementText: IText = {
       font: {
@@ -137,7 +146,27 @@ export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
       <ActionButton
         icon={<FormatColorFill />}
         label=""
+        onClick={fillBackground}
       />
+      <div className={styles['form-box']}>
+        {isFieldSelectVisible && (
+          <FieldSelect
+            items={[
+              'белый',
+              'черный',
+              'красный',
+              'оранжевый',
+              'желтый',
+              'зеленый',
+              'голубой',
+              'синий',
+              'фиолетовый',
+              'розовый',
+            ]}
+            label={'Фон слайда'}
+          />
+        )}
+      </div>
     </div>
   )
 }
