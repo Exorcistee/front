@@ -131,8 +131,9 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
   const handleAddSlide = () => {
     const newSlide: ISlide = {
       background: { color: 'red' }, // TODO: Сейчас данные хардкодятся, в будущем реализовать save текущих слайдов
-      id: Date.now(),
+      id: `${Date.now()}`,
       index: presentationData.length,
+      selectedElements: [],
       slideElements: [
         new Text({
           color: 'black',
@@ -175,7 +176,10 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
       <div className={styles['work-space']}>
         <SlideList
           handleSelectSlide={handleSelectSlide}
+          selectElements={selectElement}
+          selectedElements={selectedElements}
           selectedSlides={selectedSlides}
+          setElements={setElements}
           slideList={presentationData}
         />
         <MainSpace

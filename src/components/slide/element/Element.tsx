@@ -152,7 +152,7 @@ export const SlideElement: FC<SlideElementProps> = ({
     return (
       <div
         ref={refCont}
-        className={`${styles.contanier} ${className}`}
+        className={styles.contanier}
       >
         <div
           ref={ref}
@@ -172,7 +172,7 @@ export const SlideElement: FC<SlideElementProps> = ({
     return (
       <div
         ref={refCont}
-        className={`${styles.contanier} ${className}`}
+        className={styles.contanier}
       >
         <div
           ref={ref}
@@ -189,7 +189,7 @@ export const SlideElement: FC<SlideElementProps> = ({
     return (
       <div
         ref={refCont}
-        className={`${styles.contanier} ${className}`}
+        className={styles.contanier}
       >
         <div
           ref={ref}

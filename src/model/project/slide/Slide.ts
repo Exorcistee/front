@@ -4,6 +4,8 @@ import { IBaseSlideElement } from './element/BaseSlideElement'
 export interface ISlide {
   background: Background;
   id: string;
-  selectedElements: number[];
+  index: number;
+  isSelected?: boolean;
+  selectedElements: string[];
   slideElements: IBaseSlideElement[];
 }

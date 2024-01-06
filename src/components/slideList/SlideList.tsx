@@ -1,9 +1,6 @@
 import { FC } from 'react'
+import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { ISlide } from '~/model/project/slide/Slide'
-import {
-  deselectSlide,
-  selectSlide,
-} from '~/store/slideActionCreators'
 import { Slide } from '../slide/Slide'
 import style from './SlideList.module.css'
 
@@ -11,6 +8,9 @@ interface SlideListProps {
   slideList: ISlide[];
   selectedSlides: number[];
   handleSelectSlide: (index: number) => void;
+  setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  selectElements: (idElement: string) => void;
+  selectedElements: string[];
 }
 
 export const SlideList: FC<SlideListProps> = (props: SlideListProps): JSX.Element => {
@@ -29,7 +29,10 @@ export const SlideList: FC<SlideListProps> = (props: SlideListProps): JSX.Elemen
             key={slide.id}
             isPreview
             index={index}
-            isSelected={selectedSlidesIndexes.includes(index)}
+            isSelected={props.selectedSlides.includes(index)}
+            selectElements={props.selectElements}
+            selectedElements={props.selectedElements}
+            setElements={props.setElements}
             slide={slide}
             onCtrlSelectSlide={() => { props.handleSelectSlide(index) } }
           />

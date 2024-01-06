@@ -2,18 +2,8 @@ import {
   FC,
   MouseEvent,
 } from 'react'
-import {
-  deselectElement,
-  removeAllElements,
-  selectElement,
-} from '~/store/actionsElements'
-import {
-  useDispatch,
-  useSelector,
-} from 'react-redux'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { ISlide } from '~/model/project/slide/Slide'
-import { RootState } from '~/store/reducer/rootReducer'
 import { SlideElement } from './element/Element'
 import styles from './Slide.module.css'
 
@@ -34,9 +24,7 @@ const _SlideElements: FC<_SlideElementsProps> = ({
           return (
             <SlideElement
               key={el.id}
-              className={selectedElements.has(el.id) ? 'selected' : ''}
               element={el}
-              // eslint-disable-next-line @typescript-eslint/no-empty-function
               selectElements={selectElements}
               selectedElements={selectedElements}
               setElements={setElements}
@@ -60,7 +48,7 @@ interface SlideProps {
 }
 
 export const Slide: FC<SlideProps> = ({
-  slide, isPreview, index, onCtrlSelectSlide, setElements, selectedElements, selectElements,
+  slide, isPreview, isSelected, index, onCtrlSelectSlide, setElements, selectedElements, selectElements,
 }: SlideProps): JSX.Element => {
   const handleClick = (event: MouseEvent) => {
     if (event.ctrlKey || event.metaKey) {
