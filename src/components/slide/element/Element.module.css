@@ -6,3 +6,7 @@
   position: absolute;
   cursor: grab;
 }
+
+.selected {
+  border: 10px solid rgb(253, 7, 171);
+}

@@ -79,3 +79,7 @@
   box-shadow: 0 4px 8px rgb(0 0 0 / 6%);
 
 }
+
+.selected {
+  border: 10px solid rgb(253, 7, 171);
+}

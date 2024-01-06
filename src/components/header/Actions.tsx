@@ -1,3 +1,16 @@
+import {
+  addImageElement,
+  addShapeElement,
+  addTextElement,
+} from '~/store/actionsElements'
+import {
+  addSlide,
+  removeSelectedSlides,
+} from '~/store/slideActionCreators'
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux'
 import { ActionButton } from './ActionButton'
 import AddBoxIcon from '@mui/icons-material/AddBox'
 import Category from '@mui/icons-material/Category'
@@ -11,18 +24,43 @@ import { IBaseSlideShape } from '~/model/project/slide/element/shape/BaseSlideSh
 import { IImage } from '~/model/project/slide/element/Image'
 import { IText } from '~/model/project/slide/element/Text'
 import InsertPhoto from '@mui/icons-material/InsertPhoto'
+import { ISlide } from '~/model/project/slide/Slide'
+import { RootState } from '~/store/reducer/rootReducer'
 import { Size } from '~/model/base/Size'
 import { SlideElementEnum } from '~/model/project/slide/element/SlideElementEnum'
 import TextFields from '@mui/icons-material/TextFields'
+import { deleteElement } from '~/store/actionsElements'
 import styles from './Actions.module.css'
 
 interface ActionProps {
   handleAddSlide: () => void;
   handleDeleteSlide: () => void;
   onAddElement: (newElement: IBaseSlideElement) => void;
+  deleteElement: () => void;
 }
 
 export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
+  const dispatch = useDispatch()
+  const selectedElements = useSelector((state: RootState) => state.selectedElements) as Set<string>
+  const selectedElementsArray = Array.from(selectedElements)
+
+  const handleDelete= () => {
+    dispatch(deleteElement(selectedElementsArray))
+  }
+
+  const handleAddSlide = () => {
+    const newSlide: ISlide = {
+      background: { color: '123' },
+      id: `${Date.now()}`,
+      selectedElements: [],
+      slideElements: [],
+    }
+    dispatch(addSlide(newSlide))
+  }
+
+  const handleDeleteSlide = () => {
+    dispatch(removeSelectedSlides())
+  }
 
   const addNewTextElement = () => {
     const newElementText: IText = {
@@ -95,6 +133,7 @@ export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
     }
     props.onAddElement(newElementImage)
   }
+
   return (
     <div className={styles['action-bar']}>
       <div className={styles['action-main']}>
@@ -111,7 +150,8 @@ export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
       </div>
       <ActionButton
         icon={<ChevronLeftIcon />}
-        label=""
+        label="Удалить элементы"
+        onClick={props.deleteElement}
       />
       <ActionButton
         icon={<ChevronRightIcon />}
