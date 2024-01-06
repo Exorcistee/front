@@ -7,6 +7,8 @@ import { Actions } from '../header/Actions'
 import { Header } from '../header/Header'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { ISlide } from '~/model/project/slide/Slide'
+import { IText } from '~/model/project/slide/element/Text'
+import { InfoSpace } from '../infoSpace/InfoSpace'
 import { MainSpace } from '../mainSpace/MainSpace'
 import { Size } from '~/model/base/Size'
 import { SlideList } from '../slideList/SlideList'
@@ -162,6 +164,20 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
         <MainSpace
           elements={elements}
           setElements={setElements}
+        />
+        <InfoSpace infoSpace={
+          {
+            id: Date.now(),
+            slideElement: new Text({
+              color: 'black',
+              family: '123214',
+              size: 13,
+            },
+            `TextId ${Date.now()}`,
+            new Size(1, 1)
+            ) as IText,
+          }
+        }
         />
       </div>
     </div>
