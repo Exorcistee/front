@@ -16,6 +16,7 @@
   font-size: 24px;
 }
 
-.form-box {
+.form-box > *{
   width: 300px;
+  margin-bottom: 0px;
 }

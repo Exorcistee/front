@@ -25,12 +25,16 @@ interface ActionProps {
   handleDeleteSlide: () => void;
   onAddElement: (newElement: IBaseSlideElement) => void;
   deleteElement: () => void;
+  onColorChange: (color: string) => void;
 }
 
 export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
   const [isFieldSelectVisible, setFieldSelectVisible] = useState(false)
   const fillBackground = () => {
     setFieldSelectVisible(!isFieldSelectVisible)
+  }
+  const handleFieldSelectChange = (color: string) => {
+    props.onColorChange(color)
   }
 
   const addNewTextElement = () => {
@@ -153,17 +157,18 @@ export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
           <FieldSelect
             items={[
               'белый',
+              'серый',
               'черный',
               'красный',
               'оранжевый',
               'желтый',
               'зеленый',
-              'голубой',
               'синий',
               'фиолетовый',
               'розовый',
             ]}
             label={'Фон слайда'}
+            onChange={handleFieldSelectChange}
           />
         )}
       </div>
