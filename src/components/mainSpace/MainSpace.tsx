@@ -1,11 +1,12 @@
 import React, { FC } from 'react'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { Slide } from '../slide/Slide'
+import { SlideElementAll } from '../editor/Editor'
 import styles from './MainSpace.module.css'
 
 interface MainSpaceProps {
   elements: IBaseSlideElement[];
-  setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  setElements: React.Dispatch<React.SetStateAction<SlideElementAll[]>>;
   selectElements: (idElement: string) => void;
   selectedElements: string[];
   backgroundColor: string;

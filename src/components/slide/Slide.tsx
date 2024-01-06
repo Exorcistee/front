@@ -42,7 +42,7 @@ interface SlideProps {
   isSelected?: boolean;
   index: number;
   onCtrlSelectSlide: (index: number) => void;
-  setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  setElements: React.Dispatch<React.SetStateAction<SlideElementAll[]>>;
   selectElements: (idElement: string) => void;
   selectedElements: string[];
 }

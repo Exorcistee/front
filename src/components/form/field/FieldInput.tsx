@@ -18,7 +18,7 @@ export const FieldInput: FC<FieldInputProps> = ({
         className={styles.fieldInput}
         type={type}
         value={value}
-        onChange={(e) => { onChange && onChange(e.target.value); return void 0 }}
+        onChange={(e) => { onChange && onChange(e.target.value)}}
       />
     </Field>
   )

@@ -2,13 +2,14 @@ import { FC } from 'react'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { ISlide } from '~/model/project/slide/Slide'
 import { Slide } from '../slide/Slide'
+import { SlideElementAll } from '../editor/Editor'
 import style from './SlideList.module.css'
 
 interface SlideListProps {
   slideList: ISlide[];
   selectedSlides: number[];
   handleSelectSlide: (index: number) => void;
-  setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  setElements: React.Dispatch<React.SetStateAction<SlideElementAll[]>>;
   selectElements: (idElement: string) => void;
   selectedElements: string[];
 }

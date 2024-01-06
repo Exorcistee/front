@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { Field } from './Field'
-import { RadioButton } from '../element/RadioButton'
 
 interface FieldRadioProps {
   label?: string;
   checked?: boolean;
-  onChange?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: boolean;
 }
 
 export const FieldRadio: FC<FieldRadioProps> = ({
@@ -15,9 +15,10 @@ export const FieldRadio: FC<FieldRadioProps> = ({
 }: FieldRadioProps): JSX.Element => {
   return (
     <Field label={label}>
-      <RadioButton
+      <input
         checked={checked}
-        onChecked={onChange}
+        type="checkbox"
+        onChange={onChange}
       />
     </Field>
   )

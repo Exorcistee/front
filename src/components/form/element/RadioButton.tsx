@@ -3,18 +3,26 @@ import styles from './RadioButton.module.css'
 
 interface RadioButtonProps {
   checked?: boolean;
-  onChecked?: () => void;
+  onChecked?: (isChecked: boolean) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const RadioButton: FC<RadioButtonProps> =({
-  checked, onChecked,
+export const RadioButton: FC<RadioButtonProps> = ({
+  checked, onChecked, onChange,
 }: RadioButtonProps): JSX.Element => {
   return (
     <div
-      className={`${styles.radioButton} ${checked && styles.checked}`}
-      onClick={onChecked}
+      aria-checked={checked}
+      className={styles.radioButton}
+      role="radio"
+      onClick={() => {
+        if (onChecked) {
+          onChecked(!checked)
+        }
+      }}
+      onChange={onChange}
     >
-      {checked && <span className={styles.checkMark}></span>}
+      <span className={styles.checkMark}></span>
     </div>
   )
 }

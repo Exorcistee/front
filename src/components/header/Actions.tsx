@@ -16,6 +16,7 @@ import { IImage } from '~/model/project/slide/element/Image'
 import { IText } from '~/model/project/slide/element/Text'
 import InsertPhoto from '@mui/icons-material/InsertPhoto'
 import { Size } from '~/model/base/Size'
+import { SlideElementAll } from '../editor/Editor'
 import { SlideElementEnum } from '~/model/project/slide/element/SlideElementEnum'
 import TextFields from '@mui/icons-material/TextFields'
 import styles from './Actions.module.css'
@@ -23,7 +24,7 @@ import styles from './Actions.module.css'
 interface ActionProps {
   handleAddSlide: () => void;
   handleDeleteSlide: () => void;
-  onAddElement: (newElement: IBaseSlideElement) => void;
+  onAddElement: (newElement: SlideElementAll) => void;
   deleteElement: () => void;
   onColorChange: (color: string) => void;
 }
@@ -40,9 +41,9 @@ export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
   const addNewTextElement = () => {
     const newElementText: IText = {
       font: {
-        color: '#FFFFFF',
+        color: 'black',
         family: 'Arial',
-        size: 10,
+        size: 15,
       },
       id: `${Date.now().toString()}-${Math.random().toString()}`,
       leftTopPoint: {

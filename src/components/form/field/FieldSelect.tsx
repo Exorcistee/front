@@ -8,7 +8,8 @@ import styles from './Field.module.css'
 interface FieldSelectProps {
   label?: string;
   items?: string[];
-  onChange?: (color: string) => void; //TODO: сделать обязательным
+  onChange?: (color: string) => void;
+  value?: string;
 }
 
 export const FieldSelect: FC<FieldSelectProps> = ({

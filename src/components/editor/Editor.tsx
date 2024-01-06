@@ -3,28 +3,47 @@ import {
   useEffect,
   useState,
 } from 'react'
+import {
+  IText,
+  Text,
+} from '~/model/project/slide/element/Text'
 import { Actions } from '../header/Actions'
 import { Header } from '../header/Header'
-import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
+import { IBaseSlideShape } from '~/model/project/slide/element/shape/BaseSlideShape'
+import { IImage } from '~/model/project/slide/element/Image'
 import { ISlide } from '~/model/project/slide/Slide'
-import { IText } from '~/model/project/slide/element/Text'
 import { InfoSpace } from '../infoSpace/InfoSpace'
 import { MainSpace } from '../mainSpace/MainSpace'
 import { Size } from '~/model/base/Size'
 import { SlideList } from '../slideList/SlideList'
-import { Text } from '~/model/project/slide/element/Text'
 import styles from './Editor.module.css'
 
 interface EditorProps {
   slides?: ISlide[];
 }
 
+export type SlideElementAll = IText | IBaseSlideShape | IImage
+
 export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
   const [presentationData, setPresentationData] = useState<ISlide[]>(props.slides ?? [])
   const [selectedSlides, setSelectedSlides] = useState<number[]>([])
-  const [elements, setElements] = useState<IBaseSlideElement[]>([])
+  const [elements, setElements] = useState<SlideElementAll[]>([])
+
+  const defaultElement = new Text({
+    bold: false,
+    color: 'black',
+    family: '123214',
+    italic: false,
+    size: 13,
+    underline: false,
+  },
+  'default',
+  new Size(0, 0)
+  )
+
+  const [mainElement, setMainElement] = useState<SlideElementAll>(defaultElement)
   const [mainSpaceColor, setMainSpaceColor] = useState<string>('белый')
-  const addElement = (newElement: IBaseSlideElement) => {
+  const addElement = (newElement: SlideElementAll) => {
     setElements([...elements, newElement])
   }
 
@@ -43,6 +62,20 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
   const deleteElement = () => {
     setElements(elements.filter(el => !selectedElements.includes(el.id)))
   }
+
+  const updateElement = (updatedElement: SlideElementAll) => {
+    setElements(elements.map(el => el.id === updatedElement.id ? updatedElement : el))
+  }
+
+  useEffect(() => {
+    const getLastSelectedElement = () => {
+      if (selectedElements.length === 0) return defaultElement
+      const lastSelectedId = selectedElements[selectedElements.length - 1]
+      return elements.find(el => el.id === lastSelectedId) ?? defaultElement
+    }
+    setMainElement(getLastSelectedElement())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedElements, elements])
 
   useEffect(() => {
     const updatedSlides = presentationData.map(slide => ({ ...slide }))
@@ -131,7 +164,7 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
 
   const handleAddSlide = () => {
     const newSlide: ISlide = {
-      background: { color: 'red' }, // TODO: Сейчас данные хардкодятся, в будущем реализовать save текущих слайдов
+      background: { color: 'red' },
       id: `${Date.now()}`,
       index: presentationData.length,
       selectedElements: [],
@@ -195,19 +228,15 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
           selectedElements={selectedElements}
           setElements={setElements}
         />
-        <InfoSpace infoSpace={
-          {
-            id: Date.now(),
-            slideElement: new Text({
-              color: 'black',
-              family: '123214',
-              size: 13,
-            },
-            `TextId ${Date.now()}`,
-            new Size(1, 1)
-            ) as IText,
+        <InfoSpace
+          infoSpace={
+            {
+              id: Date.now(),
+              slideElement: mainElement,
+            }
           }
-        }
+          mainElement={mainElement}
+          onUpdateElement={updateElement}
         />
       </div>
     </div>

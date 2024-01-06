@@ -4,19 +4,19 @@ import {
   useRef,
   useState,
 } from 'react'
-import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { IBaseSlideShape } from '~/model/project/slide/element/shape/BaseSlideShape'
 import { IImage } from '~/model/project/slide/element/Image'
 import { IText } from '~/model/project/slide/element/Text'
 import { ImageElement } from './image/ImageElement'
 import { ShapeElement } from './shape/ShapeElement'
+import { SlideElementAll } from '~/components/editor/Editor'
 import { SlideElementEnum } from '~/model/project/slide/element/SlideElementEnum'
 import { TextElement } from './text/TextElement'
 import styles from './Element.module.css'
 
 interface SlideElementProps {
-  element: IBaseSlideElement;
-  setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  element: SlideElementAll;
+  setElements: React.Dispatch<React.SetStateAction<SlideElementAll[]>>;
   selectedElements: string[];
   selectElements: (idElement: string) => void;
 }
@@ -143,9 +143,21 @@ export const SlideElement: FC<SlideElementProps> = ({
   }, [element, position, setElements, selectElements])
 
   const style = {
-    boxShadow: isSelected ? '0 0 0 3px orange' : 'none',
+    boxShadow: isSelected ? '0px 0px 0 1px orange' : 'none',
+    height: `${element.size.height}px`,
     left: `${position.x}px`,
     top: `${position.y}px`,
+    width: `${element.size.width}px`,
+    ...(element.type === SlideElementEnum.Text && {
+      color: (element as IText).font.color,
+      fontFamily: (element as IText).font.family,
+      fontSize: `${(element as IText).font.size}px`,
+      fontStyle: (element as IText).font.italic ? 'italic' : 'normal',
+      fontWeight: (element as IText).font.bold ? 'bold' : 'normal',
+      height: `${(element as IText).font.size}px`,
+      textDecoration: (element as IText).font.underline ? 'underline' : 'none',
+      width: `${(element as IText).font.size}px`,
+    }),
   }
 
   if (element.type === SlideElementEnum.Text) {
@@ -161,7 +173,7 @@ export const SlideElement: FC<SlideElementProps> = ({
         >
           <TextElement
             key={text.id}
-            text = {text}
+            text ={element as IText}
           />
         </div>
       </div>
