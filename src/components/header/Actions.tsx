@@ -20,10 +20,10 @@ interface ActionProps {
   handleAddSlide: () => void;
   handleDeleteSlide: () => void;
   onAddElement: (newElement: IBaseSlideElement) => void;
+  deleteElement: () => void;
 }
 
 export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
-
   const addNewTextElement = () => {
     const newElementText: IText = {
       font: {
@@ -95,6 +95,7 @@ export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
     }
     props.onAddElement(newElementImage)
   }
+
   return (
     <div className={styles['action-bar']}>
       <div className={styles['action-main']}>
@@ -111,7 +112,8 @@ export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
       </div>
       <ActionButton
         icon={<ChevronLeftIcon />}
-        label=""
+        label="Удалить элементы"
+        onClick={props.deleteElement}
       />
       <ActionButton
         icon={<ChevronRightIcon />}

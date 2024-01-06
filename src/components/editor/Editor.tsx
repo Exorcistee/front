@@ -27,6 +27,22 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
     setElements([...elements, newElement])
   }
 
+  const [selectedElements, setSelectedElements] = useState<string[]>([])
+
+  const selectElement = (selectedID: string) => {
+    setSelectedElements(prevSelectedElements => {
+      if (prevSelectedElements.includes(selectedID)) {
+        return prevSelectedElements.filter(id => id !== selectedID)
+      } else {
+        return [...prevSelectedElements, selectedID]
+      }
+    })
+  }
+
+  const deleteElement = () => {
+    setElements(elements.filter(el => !selectedElements.includes(el.id)))
+  }
+
   useEffect(() => {
     const updatedSlides = presentationData.map(slide => ({ ...slide }))
     setPresentationData(updatedSlides)
@@ -115,8 +131,9 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
   const handleAddSlide = () => {
     const newSlide: ISlide = {
       background: { color: 'red' }, // TODO: Сейчас данные хардкодятся, в будущем реализовать save текущих слайдов
-      id: Date.now(),
+      id: `${Date.now()}`,
       index: presentationData.length,
+      selectedElements: [],
       slideElements: [
         new Text({
           color: 'black',
@@ -151,6 +168,7 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
         savePresentationToFile = {savePresentationToFile}
       />
       <Actions
+        deleteElement={deleteElement}
         handleAddSlide={handleAddSlide}
         handleDeleteSlide={handleDeleteSlide}
         onAddElement={addElement}
@@ -158,11 +176,16 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
       <div className={styles['work-space']}>
         <SlideList
           handleSelectSlide={handleSelectSlide}
+          selectElements={selectElement}
+          selectedElements={selectedElements}
           selectedSlides={selectedSlides}
+          setElements={setElements}
           slideList={presentationData}
         />
         <MainSpace
           elements={elements}
+          selectElements={selectElement}
+          selectedElements={selectedElements}
           setElements={setElements}
         />
         <InfoSpace infoSpace={

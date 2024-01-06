@@ -17,6 +17,8 @@ import styles from './Element.module.css'
 interface SlideElementProps {
   element: IBaseSlideElement;
   setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  selectedElements: string[];
+  selectElements: (idElement: string) => void;
 }
 
 const _SHAPES = [
@@ -26,7 +28,7 @@ const _SHAPES = [
 ]
 
 export const SlideElement: FC<SlideElementProps> = ({
-  element, setElements,
+  element, setElements, selectElements, selectedElements,
 }: SlideElementProps): JSX.Element => {
 
   const [position, setPosition] = useState({
@@ -34,6 +36,7 @@ export const SlideElement: FC<SlideElementProps> = ({
     y: element.position.y,
   })
 
+  const isSelected = selectedElements.includes(element.id)
   const ref = useRef<HTMLDivElement>(null)
   const refCont = useRef<HTMLDivElement>(null)
   const isClicked = useRef<boolean>(false)
@@ -44,7 +47,7 @@ export const SlideElement: FC<SlideElementProps> = ({
       family: 'Arial',
       size: 12,
     },
-    id: '1',
+    id: `${Date.now()}`,
     leftTopPoint: element.leftTopPoint,
     position: element.position,
     rightBottomPoint: element.rightBottomPoint,
@@ -71,13 +74,24 @@ export const SlideElement: FC<SlideElementProps> = ({
     const box = ref.current
 
     const onMouseDown = (e: MouseEvent) => {
-      isClicked.current = true
-      coords.current.startX = e.clientX - coords.current.lastX
-      coords.current.startY = e.clientY - coords.current.lastY
+
+      if (!ref.current) return
+      const clickedElement = e.target as HTMLElement
+      const isClickInsideElement = ref.current.contains(clickedElement)
+
+      if (isClickInsideElement) {
+        if (e.ctrlKey) {
+          selectElements(element.id)
+          return
+        }
+        isClicked.current = true
+        coords.current.startX = e.clientX - coords.current.lastX
+        coords.current.startY = e.clientY - coords.current.lastY
+      }
     }
 
     const onMouseUp = () => {
-
+      if (!ref.current) return
       isClicked.current = false
 
       const newX = parseFloat(box.style.left)
@@ -104,6 +118,7 @@ export const SlideElement: FC<SlideElementProps> = ({
     }
 
     const onMouseMove = (e: MouseEvent) => {
+      if (!ref.current) return
       if (!isClicked.current) return
 
       const nextX = e.clientX - coords.current.startX + position.x
@@ -118,16 +133,17 @@ export const SlideElement: FC<SlideElementProps> = ({
     document.addEventListener('mousemove', onMouseMove)
 
     const cleanup = () => {
-      document.removeEventListener('mousedown', onMouseDown)
-      document.removeEventListener('mouseup', onMouseUp)
+      box.removeEventListener('mousedown', onMouseDown)
+      box.removeEventListener('mouseup', onMouseUp)
       document.removeEventListener('mousemove', onMouseMove)
     }
 
     return cleanup
 
-  }, [setElements, element, position])
+  }, [element, position, setElements, selectElements])
 
   const style = {
+    boxShadow: isSelected ? '0 0 0 3px orange' : 'none',
     left: `${position.x}px`,
     top: `${position.y}px`,
   }
@@ -143,7 +159,10 @@ export const SlideElement: FC<SlideElementProps> = ({
           className={styles.box}
           style={style}
         >
-          <TextElement text = {text} />
+          <TextElement
+            key={text.id}
+            text = {text}
+          />
         </div>
       </div>
     )

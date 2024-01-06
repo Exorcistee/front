@@ -1,17 +1,21 @@
-import { FC } from 'react'
+import {
+  FC,
+  MouseEvent,
+} from 'react'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { ISlide } from '~/model/project/slide/Slide'
-import { MouseEvent } from 'react'
 import { SlideElement } from './element/Element'
 import styles from './Slide.module.css'
 
 interface _SlideElementsProps {
   elements: IBaseSlideElement[];
-  setElements?: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  selectElements: (idElement: string) => void;
+  selectedElements: string[];
 }
 
 const _SlideElements: FC<_SlideElementsProps> = ({
-  elements, setElements,
+  elements, setElements, selectElements, selectedElements,
 }: _SlideElementsProps): JSX.Element => {
   return (
     <div>
@@ -21,8 +25,9 @@ const _SlideElements: FC<_SlideElementsProps> = ({
             <SlideElement
               key={el.id}
               element={el}
-              // eslint-disable-next-line @typescript-eslint/no-empty-function
-              setElements={setElements ?? (() => {})}
+              selectElements={selectElements}
+              selectedElements={selectedElements}
+              setElements={setElements}
             />
           )
         })}
@@ -34,13 +39,16 @@ const _SlideElements: FC<_SlideElementsProps> = ({
 interface SlideProps {
   slide: ISlide;
   isPreview: boolean;
+  isSelected?: boolean;
   index: number;
   onCtrlSelectSlide: (index: number) => void;
-  setElements?: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  selectElements: (idElement: string) => void;
+  selectedElements: string[];
 }
 
 export const Slide: FC<SlideProps> = ({
-  slide, isPreview, index, onCtrlSelectSlide, setElements,
+  slide, isPreview, isSelected, index, onCtrlSelectSlide, setElements, selectedElements, selectElements,
 }: SlideProps): JSX.Element => {
   const handleClick = (event: MouseEvent) => {
     if (event.ctrlKey || event.metaKey) {
@@ -62,10 +70,12 @@ export const Slide: FC<SlideProps> = ({
             <span className={styles['slide-index']}>
               {index+1}
             </span>
-            <div className={styles[slide.isSelected ? 'slide-miniature-selected' : 'slide-miniature']}>
+            <div className={styles[isSelected ? 'slide-miniature-selected' : 'slide-miniature']}>
               <div className={styles['slide-preview-mini']}>
                 <_SlideElements
                   elements={slide.slideElements}
+                  selectElements={selectElements}
+                  selectedElements={selectedElements}
                   setElements={setElements}
                 />
               </div>
@@ -75,6 +85,8 @@ export const Slide: FC<SlideProps> = ({
         : (
           <_SlideElements
             elements={slide.slideElements}
+            selectElements={selectElements}
+            selectedElements={selectedElements}
             setElements={setElements}
           />
         )
