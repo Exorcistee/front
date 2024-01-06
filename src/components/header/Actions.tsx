@@ -20,6 +20,7 @@ interface ActionProps {
   handleAddSlide: () => void;
   handleDeleteSlide: () => void;
   onAddElement: (newElement: IBaseSlideElement) => void;
+  deleteElement: () => void;
 }
 
 export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
@@ -111,7 +112,8 @@ export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
       </div>
       <ActionButton
         icon={<ChevronLeftIcon />}
-        label=""
+        label="Удалить элементы"
+        onClick={props.deleteElement}
       />
       <ActionButton
         icon={<ChevronRightIcon />}

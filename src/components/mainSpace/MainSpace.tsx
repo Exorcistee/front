@@ -6,10 +6,12 @@ import styles from './MainSpace.module.css'
 interface MainSpaceProps {
   elements: IBaseSlideElement[];
   setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  selectElements: (idElement: string) => void;
+  selectedElements: string[];
 }
 
 export const MainSpace: FC<MainSpaceProps > = ( {
-  elements, setElements,
+  elements, setElements, selectElements, selectedElements,
 } : MainSpaceProps): JSX.Element => {
   return (
     <div className={styles.background}>
@@ -25,6 +27,8 @@ export const MainSpace: FC<MainSpaceProps > = ( {
           }}
           index={1}
           isPreview={false}
+          selectElements={selectElements}
+          selectedElements={selectedElements}
           setElements={setElements}
           // eslint-disable-next-line @typescript-eslint/no-empty-function
           onCtrlSelectSlide={() => {}}

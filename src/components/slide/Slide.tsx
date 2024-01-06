@@ -7,11 +7,13 @@ import styles from './Slide.module.css'
 
 interface _SlideElementsProps {
   elements: IBaseSlideElement[];
-  setElements?: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  selectElements: (idElement: string) => void;
+  selectedElements: string[];
 }
 
 const _SlideElements: FC<_SlideElementsProps> = ({
-  elements, setElements,
+  elements, setElements, selectElements, selectedElements,
 }: _SlideElementsProps): JSX.Element => {
   return (
     <div>
@@ -22,7 +24,9 @@ const _SlideElements: FC<_SlideElementsProps> = ({
               key={el.id}
               element={el}
               // eslint-disable-next-line @typescript-eslint/no-empty-function
-              setElements={setElements ?? (() => {})}
+              selectElements={selectElements}
+              selectedElements={selectedElements}
+              setElements={setElements}
             />
           )
         })}
@@ -36,11 +40,13 @@ interface SlideProps {
   isPreview: boolean;
   index: number;
   onCtrlSelectSlide: (index: number) => void;
-  setElements?: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
+  selectElements: (idElement: string) => void;
+  selectedElements: string[];
 }
 
 export const Slide: FC<SlideProps> = ({
-  slide, isPreview, index, onCtrlSelectSlide, setElements,
+  slide, isPreview, index, onCtrlSelectSlide, setElements, selectedElements, selectElements,
 }: SlideProps): JSX.Element => {
   const handleClick = (event: MouseEvent) => {
     if (event.ctrlKey || event.metaKey) {
@@ -66,6 +72,8 @@ export const Slide: FC<SlideProps> = ({
               <div className={styles['slide-preview-mini']}>
                 <_SlideElements
                   elements={slide.slideElements}
+                  selectElements={selectElements}
+                  selectedElements={selectedElements}
                   setElements={setElements}
                 />
               </div>
@@ -75,6 +83,8 @@ export const Slide: FC<SlideProps> = ({
         : (
           <_SlideElements
             elements={slide.slideElements}
+            selectElements={selectElements}
+            selectedElements={selectedElements}
             setElements={setElements}
           />
         )

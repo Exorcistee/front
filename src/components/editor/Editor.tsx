@@ -25,6 +25,22 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
     setElements([...elements, newElement])
   }
 
+  const [selectedElements, setSelectedElements] = useState<string[]>([])
+
+  const selectElement = (selectedID: string) => {
+    setSelectedElements(prevSelectedElements => {
+      if (prevSelectedElements.includes(selectedID)) {
+        return prevSelectedElements.filter(id => id !== selectedID)
+      } else {
+        return [...prevSelectedElements, selectedID]
+      }
+    })
+  }
+
+  const deleteElement = () => {
+    setElements(elements.filter(el => !selectedElements.includes(el.id)))
+  }
+
   useEffect(() => {
     const updatedSlides = presentationData.map(slide => ({ ...slide }))
     setPresentationData(updatedSlides)
@@ -149,6 +165,7 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
         savePresentationToFile = {savePresentationToFile}
       />
       <Actions
+        deleteElement={deleteElement}
         handleAddSlide={handleAddSlide}
         handleDeleteSlide={handleDeleteSlide}
         onAddElement={addElement}
@@ -161,6 +178,8 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
         />
         <MainSpace
           elements={elements}
+          selectElements={selectElement}
+          selectedElements={selectedElements}
           setElements={setElements}
         />
       </div>
