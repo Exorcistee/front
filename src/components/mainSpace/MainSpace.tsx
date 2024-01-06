@@ -20,8 +20,8 @@ export const MainSpace: FC<MainSpaceProps > = ( {
           key={Date.now().toString()}
           slide={{
             background: { color: '123321' },
-            id: 1,
             index: 1,
+            id: '1',
             selectElements: [],
             slideElements: elements,
           }}

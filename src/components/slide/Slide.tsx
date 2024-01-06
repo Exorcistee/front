@@ -1,7 +1,19 @@
-import { FC } from 'react'
+import {
+  FC,
+  MouseEvent,
+} from 'react'
+import {
+  deselectElement,
+  removeAllElements,
+  selectElement,
+} from '~/store/actionsElements'
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux'
 import { IBaseSlideElement } from '~/model/project/slide/element/BaseSlideElement'
 import { ISlide } from '~/model/project/slide/Slide'
-import { MouseEvent } from 'react'
+import { RootState } from '~/store/reducer/rootReducer'
 import { SlideElement } from './element/Element'
 import styles from './Slide.module.css'
 
@@ -22,6 +34,7 @@ const _SlideElements: FC<_SlideElementsProps> = ({
           return (
             <SlideElement
               key={el.id}
+              className={selectedElements.has(el.id) ? 'selected' : ''}
               element={el}
               // eslint-disable-next-line @typescript-eslint/no-empty-function
               selectElements={selectElements}
@@ -38,6 +51,7 @@ const _SlideElements: FC<_SlideElementsProps> = ({
 interface SlideProps {
   slide: ISlide;
   isPreview: boolean;
+  isSelected?: boolean;
   index: number;
   onCtrlSelectSlide: (index: number) => void;
   setElements: React.Dispatch<React.SetStateAction<IBaseSlideElement[]>>;
@@ -68,7 +82,7 @@ export const Slide: FC<SlideProps> = ({
             <span className={styles['slide-index']}>
               {index+1}
             </span>
-            <div className={styles[slide.isSelected ? 'slide-miniature-selected' : 'slide-miniature']}>
+            <div className={styles[isSelected ? 'slide-miniature-selected' : 'slide-miniature']}>
               <div className={styles['slide-preview-mini']}>
                 <_SlideElements
                   elements={slide.slideElements}

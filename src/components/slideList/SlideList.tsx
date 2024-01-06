@@ -1,5 +1,9 @@
 import { FC } from 'react'
 import { ISlide } from '~/model/project/slide/Slide'
+import {
+  deselectSlide,
+  selectSlide,
+} from '~/store/slideActionCreators'
 import { Slide } from '../slide/Slide'
 import style from './SlideList.module.css'
 
@@ -25,6 +29,7 @@ export const SlideList: FC<SlideListProps> = (props: SlideListProps): JSX.Elemen
             key={slide.id}
             isPreview
             index={index}
+            isSelected={selectedSlidesIndexes.includes(index)}
             slide={slide}
             onCtrlSelectSlide={() => { props.handleSelectSlide(index) } }
           />

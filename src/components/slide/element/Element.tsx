@@ -37,7 +37,6 @@ export const SlideElement: FC<SlideElementProps> = ({
   })
 
   const isSelected = selectedElements.includes(element.id)
-
   const ref = useRef<HTMLDivElement>(null)
   const refCont = useRef<HTMLDivElement>(null)
   const isClicked = useRef<boolean>(false)
@@ -48,7 +47,7 @@ export const SlideElement: FC<SlideElementProps> = ({
       family: 'Arial',
       size: 12,
     },
-    id: '1',
+    id: `${Date.now()}`,
     leftTopPoint: element.leftTopPoint,
     position: element.position,
     rightBottomPoint: element.rightBottomPoint,
@@ -153,14 +152,17 @@ export const SlideElement: FC<SlideElementProps> = ({
     return (
       <div
         ref={refCont}
-        className={styles.contanier}
+        className={`${styles.contanier} ${className}`}
       >
         <div
           ref={ref}
           className={styles.box}
           style={style}
         >
-          <TextElement text = {text} />
+          <TextElement
+            key={text.id}
+            text = {text}
+          />
         </div>
       </div>
     )
@@ -170,7 +172,7 @@ export const SlideElement: FC<SlideElementProps> = ({
     return (
       <div
         ref={refCont}
-        className={styles.contanier}
+        className={`${styles.contanier} ${className}`}
       >
         <div
           ref={ref}
@@ -187,7 +189,7 @@ export const SlideElement: FC<SlideElementProps> = ({
     return (
       <div
         ref={refCont}
-        className={styles.contanier}
+        className={`${styles.contanier} ${className}`}
       >
         <div
           ref={ref}
