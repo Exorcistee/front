@@ -229,6 +229,7 @@ export const Editor: FC<EditorProps > = (props: EditorProps ): JSX.Element => {
           setElements={setElements}
         />
         <InfoSpace
+          key={mainElement.id}
           infoSpace={
             {
               id: Date.now(),

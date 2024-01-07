@@ -25,12 +25,38 @@ export const TextForm: FC<TextFormProps> = (props: TextFormProps): JSX.Element =
   const [underline, setUnderLine] = useState(props.element.font.underline ?? false)
   const [colorText, setColorText] = useState(props.element.font.color)
   const [sizeText, setSizeText] = useState(props.element.font.size)
+  const [text, setText] = useState(props.element.text)
+
+  const russianToEnglishColor = (color: string): string => {
+    const colorsMap: Record<string, string> = {
+      'белый': 'white',
+      'желтый': 'yellow',
+      'зеленый': 'green',
+      'красный': 'red',
+      'оранжевый': 'orange',
+      'розовый': 'pink',
+      'серый': 'grey',
+      'синий': 'blue',
+      'фиолетовый': 'purple',
+      'черный': 'black',
+    }
+
+    return colorsMap[color]
+  }
 
   const handleHeightChange = (newHeight: number) => {
     setHeight(newHeight)
     props.onFormChange({
       ...props.element,
       size: new Size(newHeight, props.element.size.width),
+    })
+  }
+
+  const handleTextChange = (newText: string) => {
+    setText(newText)
+    props.onFormChange({
+      ...props.element,
+      text: newText,
     })
   }
 
@@ -108,7 +134,7 @@ export const TextForm: FC<TextFormProps> = (props: TextFormProps): JSX.Element =
       ...props.element,
       font: {
         bold: bold,
-        color: newColor,
+        color: russianToEnglishColor(newColor),
         family: fontFamily,
         italic: italic,
         size: sizeText,
@@ -152,28 +178,16 @@ export const TextForm: FC<TextFormProps> = (props: TextFormProps): JSX.Element =
           onChange={(newWidth) => {handleWidthChange(parseFloat(newWidth))
           }}
         />
-        <FieldInput
-          label={'Рамка'}
-          type={'number'}
-        />
-        <FieldSelect
-          items={[
-            'красный',
-            'оранжевый',
-            'желтый',
-            'зеленый',
-            'голубой',
-            'синий',
-            'фиолетовый',
-            'розовый',
-            'белый',
-            'черный',
-          ]}
-          label={'Заливка'}
-        />
       </div>
       <div className={styles.line}></div>
       <div className={styles.card}>
+        <FieldInput
+          label={'Текст'}
+          type={'text'}
+          value={text}
+          onChange={(newText) => {handleTextChange(newText)
+          }}
+        />
         <FieldSelect
           items={['Arial', 'Roboto', 'Open Sans']}
           label={'Шрифт'}
@@ -195,7 +209,7 @@ export const TextForm: FC<TextFormProps> = (props: TextFormProps): JSX.Element =
             'черный',
           ]}
           label={'Цвет'}
-          value={(colorText).toString()}
+          value={colorText}
           onChange={(newColor) => {handleColorTextChange(newColor)
           }}
         />

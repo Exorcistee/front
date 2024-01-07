@@ -17,6 +17,7 @@ export const ImageForm: FC<ImageFormProps> = (props: ImageFormProps): JSX.Elemen
 
   const [height, setHeight] = useState(props.element.size.height)
   const [width, setWidth] = useState(props.element.size.width)
+  const [source, setSource] = useState(props.element.imgSource)
 
   const handleHeightChange = (newHeight: number) => {
     setHeight(newHeight)
@@ -31,6 +32,14 @@ export const ImageForm: FC<ImageFormProps> = (props: ImageFormProps): JSX.Elemen
     props.onFormChange({
       ...props.element,
       size: new Size(props.element.size.height, newWidth),
+    })
+  }
+
+  const handleSourceChange = (newSource: string) => {
+    setSource(newSource)
+    props.onFormChange({
+      ...props.element,
+      imgSource: newSource,
     })
   }
 
@@ -52,6 +61,13 @@ export const ImageForm: FC<ImageFormProps> = (props: ImageFormProps): JSX.Elemen
           type={'number'}
           value={(width).toString()}
           onChange={(newWidth) => {handleWidthChange(parseFloat(newWidth))
+          }}
+        />
+        <FieldInput
+          label={'Ссылка на картинку'}
+          type={'text'}
+          value={source}
+          onChange={(newSource) => {handleSourceChange(newSource)
           }}
         />
       </div>

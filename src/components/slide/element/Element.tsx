@@ -41,21 +41,6 @@ export const SlideElement: FC<SlideElementProps> = ({
   const refCont = useRef<HTMLDivElement>(null)
   const isClicked = useRef<boolean>(false)
 
-  const text: IText = {
-    font: {
-      color: '#ffffff',
-      family: 'Arial',
-      size: 12,
-    },
-    id: `${Date.now()}`,
-    leftTopPoint: element.leftTopPoint,
-    position: element.position,
-    rightBottomPoint: element.rightBottomPoint,
-    size: element.size,
-    text: 'default',
-    type: element.type,
-  }
-
   const coords = useRef<{
     startX: number;
     startY: number;
@@ -172,7 +157,7 @@ export const SlideElement: FC<SlideElementProps> = ({
           style={style}
         >
           <TextElement
-            key={text.id}
+            key={element.id}
             text ={element as IText}
           />
         </div>

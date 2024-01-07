@@ -81,7 +81,7 @@ export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
         x: 0,
         y: 0,
       },
-      size: new Size(10, 10),
+      size: new Size(100, 100),
       type: SlideElementEnum.Circle,
     }
     props.onAddElement(newElementShape)
@@ -90,7 +90,7 @@ export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
   const addNewImageElement = () => {
     const newElementImage: IImage = {
       id: `${Date.now().toString()}-${Math.random().toString()}`,
-      imgSource: '33',
+      imgSource: 'https://i.pinimg.com/originals/2b/17/40/2b1740ad3d017c7248187c1c172e45e2.jpg',
       leftTopPoint: {
         x: 0,
         y: 0,
@@ -103,7 +103,7 @@ export const Actions: FC<ActionProps> = (props: ActionProps): JSX.Element => {
         x: 0,
         y: 0,
       },
-      size: new Size(10,10),
+      size: new Size(100,100),
       type: SlideElementEnum.Image,
     }
     props.onAddElement(newElementImage)
